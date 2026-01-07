@@ -7,14 +7,14 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
-# Recommended Groq model (fast, strong for code reasoning & tool use)
-DEFAULT_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"  # Or "llama3-70b-8192", "mixtral-8x7b-32768", etc.
+DEFAULT_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
 
 class AuditorAgent:
     """
     Agent Auditeur :
     - Analyse statique avec Pylint
-    - Génère un plan de refactoring
+    - Analyse du code source pour détecter les bugs logiques
+    - Génère un plan de refactoring priorisé
     - Ne modifie JAMAIS le code
     """
 
@@ -32,18 +32,37 @@ class AuditorAgent:
         self.system_prompt = read_file("prompts/auditor_system.txt")
 
     def audit(self, file_path: str) -> str:
+        """
+        Analyse un fichier Python et génère un plan de refactoring complet.
+        
+        Args:
+            file_path: Chemin vers le fichier Python à analyser
+            
+        Returns:
+            Plan de refactoring détaillé en Markdown
+        """
         try:
-            # 1. Analyse statique du fichier Python
+            # 1. Lecture du code source
+            code_content = read_file(file_path)
+            
+            # 2. Analyse statique du fichier Python
             pylint_report = run_pylint(file_path)
 
-            # 2. Prépare le contenu utilisateur (détails + rapport)
+            # 3. Prépare le contenu utilisateur (code + rapport Pylint)
             user_content = (
                 f"Fichier analysé : {file_path}\n\n"
-                f"Rapport Pylint :\n{pylint_report}\n\n"
-                "Génère un plan de refactoring détaillé basé sur les problèmes identifiés."
+                f"--- CODE SOURCE ---\n"
+                f"```python\n{code_content}\n```\n\n"
+                f"--- RAPPORT PYLINT ---\n"
+                f"{pylint_report}\n\n"
+                "Génère un plan de refactoring détaillé basé sur :\n"
+                "1. Les problèmes identifiés par Pylint\n"
+                "2. Les bugs logiques potentiels que tu détectes dans le code\n"
+                "3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n"
+                "4. Les violations des bonnes pratiques Python"
             )
 
-            # 3. Appel au modèle Groq (chat completions)
+            # 4. Appel au modèle Groq (chat completions)
             response = self.client.chat.completions.create(
                 model=self.model_name,
                 messages=[
@@ -51,12 +70,12 @@ class AuditorAgent:
                     {"role": "user", "content": user_content}
                 ],
                 temperature=0.3,  # Low for more deterministic refactoring plans
-                max_tokens=2048,  # Adjust based on your needs (Groq limits are generous)
+                max_tokens=3072,  # Augmenté pour les analyses plus détaillées
             )
 
             refactoring_plan = response.choices[0].message.content.strip()
 
-            # 4. Logging strict
+            # 5. Logging strict
             log_experiment(
                 agent_name=self.name,
                 model_used=self.model_name,
@@ -64,8 +83,9 @@ class AuditorAgent:
                 status="SUCCESS",
                 details={
                     "file_path": file_path,
+                    "code_length": len(code_content),
                     "pylint_report": pylint_report,
-                    "input_prompt": user_content,  # Log only user part (system is static)
+                    "input_prompt": user_content,
                     "output_response": refactoring_plan
                 }
             )
@@ -82,7 +102,8 @@ class AuditorAgent:
                 details={
                     "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
                     "output_response": str(error),
-                    "file_path": file_path
+                    "file_path": file_path,
+                    "error_type": type(error).__name__
                 }
             )
             return f"Erreur Auditeur : {error}"
