@@ -9,14 +9,134 @@
         "status": "INFO"
     },
     {
-        "id": "17dca901-0438-4040-829b-02be8a931f08",
-        "timestamp": "2026-01-05T20:06:07.060386",
+        "id": "f58bc15d-e316-46d2-8a38-407f96649ef3",
+        "timestamp": "2026-01-06T22:28:27.895360",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "bd09bf9a-3c7e-4179-905a-a4794954d355",
+        "timestamp": "2026-01-06T22:28:50.799681",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "4b0d1455-2448-49f6-86b6-704a955b7f27",
+        "timestamp": "2026-01-06T23:12:41.352711",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "f38b0e07-3c0d-4068-b3da-458126ee2305",
+        "timestamp": "2026-01-06T23:15:28.692214",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "3fdade72-555c-4bdc-9660-efa8c47b4d66",
+        "timestamp": "2026-01-06T23:18:30.255153",
         "agent": "Auditor",
         "model": "gemini-2.5-flash",
         "action": "CODE_ANALYSIS",
         "details": {
-            "input_prompt": "Analyse ce fichier Python",
-            "output_response": "Le fichier contient 2 erreurs et pas de docstring."
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "2e239ea9-be05-45ef-a74a-40269a7094bc",
+        "timestamp": "2026-01-07T12:46:09.559535",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "323672c3-04af-4a4c-8231-f3830342ca6c",
+        "timestamp": "2026-01-07T12:46:25.445447",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "01098122-04dc-4943-a246-7bf575bd8561",
+        "timestamp": "2026-01-07T18:27:50.486019",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. ",
+            "file_path": "sandbox/buggy_code.py"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "5058cb6d-3c7c-4dca-84d3-d5a62a96a7d1",
+        "timestamp": "2026-01-07T18:53:20.792721",
+        "agent": "Auditor",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox/buggy_code.py",
+            "pylint_report": "************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox/buggy_code.py\n\nRapport Pylint :\n************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur les problèmes identifiés.",
+            "output_response": "## 1. Analyse des Problèmes\nLe rapport Pylint pour le fichier `sandbox/buggy_code.py` révèle trois problèmes principaux :\n- Une indentation incorrecte au niveau de la ligne 2, où 1 espace est utilisé au lieu des 4 attendus.\n- Un docstring de module manquant à la ligne 1.\n- Un docstring de fonction ou méthode manquant à la ligne 1.\n\n## 2. Plan de Correction\nVoici les étapes à suivre pour corriger les problèmes identifiés :\n\n1. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Indentation incorrecte à la ligne 2.\n   - **Correction attendue** : Remplacer les 1 espace par 4 espaces pour aligner correctement le code.\n\n2. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Docstring de module manquant à la ligne 1.\n   - **Correction attendue** : Ajouter un docstring au début du fichier pour décrire le contenu et l'objectif du module.\n\n3. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Docstring de fonction ou méthode manquant à la ligne 1.\n   - **Correction attendue** : Ajouter un docstring pour chaque fonction ou méthode présente dans le fichier pour en décrire l'objectif et les paramètres.\n\n## 3. Remarques Générales\n- Assurez-vous que toutes les indentations dans le fichier respectent la norme PEP8, qui recommande l'utilisation de 4 espaces pour l'indentation.\n- Les docstrings doivent être placés immédiatement après la définition du module, de la fonction ou de la classe et doivent être des chaînes de caractères_literals qui apparaissent comme premier statement après la définition.\n- Il est conseillé de vérifier l'ensemble du fichier pour s'assurer qu'il n'y a pas d'autres problèmes d'indentation ou de documentation."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "bcb8c086-2031-40e4-9400-322eeba50940",
+        "timestamp": "2026-01-07T19:28:17.978174",
+        "agent": "Auditor",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox/buggy_code.py",
+            "pylint_report": "************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox/buggy_code.py\n\nRapport Pylint :\n************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur les problèmes identifiés.",
+            "output_response": "## 1. Analyse des Problèmes\nLe rapport Pylint pour le fichier `sandbox/buggy_code.py` révèle trois problèmes principaux :\n- Une indentation incorrecte au niveau de la ligne 2, où 1 espace est utilisé au lieu des 4 attendus.\n- Un docstring de module manquant à la ligne 1.\n- Un docstring de fonction ou méthode manquant à la ligne 1.\n\n## 2. Plan de Correction\nVoici les étapes à suivre pour corriger les problèmes identifiés :\n\n1. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Indentation incorrecte à la ligne 2.\n   - **Correction attendue** : Remplacer les 1 espace par 4 espaces pour aligner correctement le code.\n\n2. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Docstring de module manquant à la ligne 1.\n   - **Correction attendue** : Ajouter un docstring au début du module pour décrire son contenu et son objectif.\n\n3. **Fichier concerné** : sandbox/buggy_code.py\n   - **Problème** : Docstring de fonction ou méthode manquant à la ligne 1.\n   - **Correction attendue** : Ajouter un docstring à la fonction ou méthode pour en décrire le but, les paramètres et les valeurs de retour.\n\n## 3. Remarques Générales\n- Assurer que l'indentation est cohérente dans tout le fichier en utilisant 4 espaces pour chaque niveau d'indentation, conformément aux recommandations PEP8.\n- Les docstrings devraient être rédigés de manière claire et concise, en fournissant suffisamment d'informations pour que les utilisateurs comprennent comment utiliser le module, les fonctions ou les méthodes.\n- Considérer l'ajout de commentaires supplémentaires si certaines parties du code sont complexes ou non évidentes, pour améliorer la lisibilité et la maintenabilité du code."
         },
         "status": "SUCCESS"
     }
