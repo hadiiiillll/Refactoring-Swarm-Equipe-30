@@ -343,5 +343,109 @@
             "output_response": "Mission terminée avec succès"
         },
         "status": "SUCCESS"
+    },
+    {
+        "id": "b9e29d60-12ba-4c91-a7a4-ae1e791c2339",
+        "timestamp": "2026-01-08T21:00:18.000226",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "cf6f5c6b-bcba-4235-ba5d-1a3a7fa049c6",
+        "timestamp": "2026-01-08T21:00:18.051769",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 2,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "2 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "efe3d78f-5494-4b08-b34f-fe1931f9e9c4",
+        "timestamp": "2026-01-08T21:00:25.180245",
+        "agent": "Auditor",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\test1.py",
+            "code_length": 94,
+            "pylint_report": "************* Module test1\nsandbox\\test1.py:3:19: E0001: Parsing failed: 'expected ':' (test1, line 3)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\test1.py\n\n--- CODE SOURCE ---\n```python\n# fichier : bugged1.py\n\ndef multiply(a, b)\nresult = a * b\nreturn result\n\nprint(multiply(3, 4)\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module test1\nsandbox\\test1.py:3:19: E0001: Parsing failed: 'expected ':' (test1, line 3)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\nRésumé clair et concis des erreurs détectées.\nOrganise par catégorie :\n- [CRITIQUE] Bugs Critiques : 2 problèmes trouvés\n- [IMPORTANT] Problèmes Importants : 1 problème trouvé\n- [MINEUR] Problèmes Mineurs : 0 problème trouvé\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. **Erreur de syntaxe : définition de fonction**\n   - Fichier : sandbox\\test1.py\n   - Ligne : 2\n   - Problème : La définition de fonction `multiply(a, b)` manque des deux points (`:`) à la fin.\n   - Impact : Le code ne peut pas être exécuté en raison d'une erreur de syntaxe.\n   - Correction attendue : Ajouter des deux points à la fin de la définition de fonction : `def multiply(a, b):`\n\n2. **Erreur de syntaxe : appel de fonction**\n   - Fichier : sandbox\\test1.py\n   - Ligne : 5\n   - Problème : L'appel de fonction `print(multiply(3, 4)` manque d'une parenthèse fermante.\n   - Impact : Le code ne peut pas être exécuté en raison d'une erreur de syntaxe.\n   - Correction attendue : Ajouter une parenthèse fermante à la fin de l'appel de fonction : `print(multiply(3, 4))`\n\n### [IMPORTANT] Priorité IMPORTANTE\n1. **Gestion des erreurs : division par zéro potentielle**\n   - Fichier : sandbox\\test1.py\n   - Ligne : 3\n   - Problème : La fonction `multiply(a, b)` ne vérifie pas si `b` est zéro avant de multiplier. Bien que la multiplication par zéro ne soit pas une erreur en soi mais plutôt un cas particulier, il est crucial de gérer les entrées utilisateur pour éviter des problèmes potentiels dans d'autres opérations arithmétiques.\n   - Impact : Une gestion incorrecte pourrait mener à des résultats inattendus ou des erreurs dans d'autres parties du programme.\n   - Correction attendue : Ajouter une vérification pour gérer le cas où `b` est zéro, bien que cela ne soit pas strictement nécessaire pour la multiplication : \n     ```python\n     def multiply(a, b):\n         if b == 0:\n             return 0  # ou lever une exception selon les besoins\n         result = a * b\n         return result\n     ```\n\n## 3. Remarques Générales\n- **Conseils d'amélioration globale** : Il est recommandé de suivre les bonnes pratiques Python, notamment en termes de style (PEP8) et de gestion des erreurs.\n- **Suggestions d'architecture** : Pour un code plus robuste, envisagez d'ajouter des docstrings aux fonctions pour en décrire le but et les paramètres attendus.\n- **Bonnes pratiques Python recommandées** :\n  - Utiliser des outils de formatage automatique comme `black` ou `autopep8` pour respecter la PEP8.\n  - Considérer l'utilisation de type hints pour améliorer la lisibilité et la maintenabilité du code.\n- **Score de qualité estimé après corrections** : Après avoir corrigé les problèmes critiques et importants, le score de qualité du code devrait s'améliorer significativement, passant d'un état instable à un état stable et plus maintenable."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e846b21c-0cee-45fc-90a8-7dd4ff9e1a47",
+        "timestamp": "2026-01-08T21:00:28.027508",
+        "agent": "Auditor",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\test2.py",
+            "code_length": 113,
+            "pylint_report": "************* Module test2\nsandbox\\test2.py:6:17: E0001: Parsing failed: 'expected ':' (test2, line 6)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\test2.py\n\n--- CODE SOURCE ---\n```python\n# fichier : bugged2.py\n\nnumbers = [1, 2, 3, 4, 5]\ntotal = 0\n\nfor n in numbers\ntotal += n\n\nprint(\"Total =\", total\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module test2\nsandbox\\test2.py:6:17: E0001: Parsing failed: 'expected ':' (test2, line 6)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\nRésumé clair et concis des erreurs détectées.\n\n- [CRITIQUE] Bugs Critiques : 2 problèmes trouvés\n- [IMPORTANT] Problèmes Importants : 1 problème trouvé\n- [MINEUR] Problèmes Mineurs : 1 problème trouvé\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. **Erreur de syntaxe : point-virgule manquant**\n   - Fichier : sandbox\\test2.py\n   - Ligne : 5\n   - Problème : Il manque un point-virgule à la fin de la ligne `for n in numbers`.\n   - Impact : L'interpréteur Python ne peut pas exécuter le script à cause d'une erreur de syntaxe.\n   - Correction attendue : Ajouter un point-virgule à la fin de la ligne `for n in numbers;`.\n\n2. **Erreur de syntaxe : parenthèse fermante manquante**\n   - Fichier : sandbox\\test2.py\n   - Ligne : 7\n   - Problème : Il manque une parenthèse fermante à la fin de la ligne `print(\"Total =\", total`.\n   - Impact : L'interpréteur Python ne peut pas exécuter le script à cause d'une erreur de syntaxe.\n   - Correction attendue : Ajouter une parenthèse fermante à la fin de la ligne `print(\"Total =\", total)`.\n\n### [IMPORTANT] Priorité IMPORTANTE\n1. **Division par zéro potentielle ou gestion des erreurs**\n   - Fichier : sandbox\\test2.py\n   - Ligne : Aucune ligne spécifique, mais concerne l'ensemble du script\n   - Problème : Bien que le script ne contienne pas explicitement de division par zéro, il est crucial de toujours anticiper et gérer les erreurs potentielles, notamment lorsque les données d'entrée sont dynamiques.\n   - Impact : Un manque de gestion des erreurs peut mener à des interruptions inattendues du script.\n   - Correction attendue : Envisager l'ajout de try/except pour gérer les erreurs potentielles, même si dans ce cas spécifique, il n'y a pas de risque de division par zéro.\n\n### [MINEUR] Priorité MINEURE\n1. **Style PEP8 et commentaires**\n   - Fichier : sandbox\\test2.py\n   - Ligne : Toutes les lignes\n   - Problème : Le code manque de commentaires et ne suit pas intégralement les recommandations PEP8 (par exemple, espaces autour des opérateurs).\n   - Impact : Un code peu lisible peut être difficile à maintenir.\n   - Correction attendue : Ajouter des commentaires pour expliquer le but du script, et reformater le code pour suivre les guidelines PEP8.\n\n## 3. Remarques Générales\n- **Conseils d'amélioration globale** : Considérer l'ajout de docstrings pour expliquer les fonctions (si le script est organisé en fonctions) et l'utilisation de commentaires pour clarifier la logique.\n- **Suggestions d'architecture** : Si le script est amené à évoluer, organiser les différentes parties en fonctions peut améliorer la lisibilité et la maintenabilité.\n- **Bonnes pratiques Python recommandées** : Utiliser des outils comme `black` et `isort` pour formatter automatiquement le code selon les standards PEP8.\n- **Score de qualité estimé après corrections** : Amélioration significative attendue, passant d'un score faible à un score proche de 8/10 après correction des problèmes critiques et mise en conformité avec les bonnes pratiques."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4434e2fd-df36-4c98-a525-44dce7d5d47e",
+        "timestamp": "2026-01-08T21:00:28.887919",
+        "agent": "FixateurAgent",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\test1.py",
+            "audit_file": "audit_reports\\test1_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : test1.py\n\nCODE BUGUÉ :\n```python\n# fichier : bugged1.py\n\ndef multiply(a, b)\nresult = a * b\nreturn result\n\nprint(multiply(3, 4)\n\n```\n\nRAPPORT D'AUDIT :\n## 1. Analyse des Problèmes\nRésumé clair et concis des erreurs détectées.\nOrganise par catégorie :\n- [CRITIQUE] Bugs Critiques : 2 problèmes trouvés\n- [IMPORTANT] Problèmes Importants : 1 problème trouvé\n- [MINEUR] Problèmes Mineurs : 0 problème trouvé\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. **Erreur de...",
+            "output_response": "Code corrigé avec succès (113 caractères)",
+            "code_length_before": 94,
+            "code_length_after": 113
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "fbe6d6af-b94c-4dda-8896-a3402be43678",
+        "timestamp": "2026-01-08T21:00:29.393508",
+        "agent": "FixateurAgent",
+        "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\test2.py",
+            "audit_file": "audit_reports\\test2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : test2.py\n\nCODE BUGUÉ :\n```python\n# fichier : bugged2.py\n\nnumbers = [1, 2, 3, 4, 5]\ntotal = 0\n\nfor n in numbers\ntotal += n\n\nprint(\"Total =\", total\n\n```\n\nRAPPORT D'AUDIT :\n## 1. Analyse des Problèmes\nRésumé clair et concis des erreurs détectées.\n\n- [CRITIQUE] Bugs Critiques : 2 problèmes trouvés\n- [IMPORTANT] Problèmes Importants : 1 problème trouvé\n- [MINEUR] Problèmes Mineurs : 1 problème trouvé\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. **Erreur de synt...",
+            "output_response": "Code corrigé avec succès (351 caractères)",
+            "code_length_before": 113,
+            "code_length_after": 351
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "106b81f0-f63b-4f07-8167-4d6b2d70833b",
+        "timestamp": "2026-01-08T21:00:29.419877",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 2,
+            "files_fixed": 2,
+            "files_failed": 0,
+            "input_prompt": "Analyse complète de 2 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
     }
 ]
