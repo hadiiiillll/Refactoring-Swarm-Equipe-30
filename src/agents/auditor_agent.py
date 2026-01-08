@@ -7,9 +7,10 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
-DEFAULT_MODEL = "gemma-3-27b-it"
+DEFAULT_MODEL = "gemini-2.5-flash"
 
 class AuditorAgent:
+    
     """
     Agent Auditeur :
     - Analyse statique avec Pylint
@@ -70,8 +71,9 @@ class AuditorAgent:
             response = self.model.generate_content(
                 full_prompt,
                 generation_config=genai.types.GenerationConfig(
-                    temperature=0.3,
-                    max_output_tokens=3072,
+            temperature=0.2, # Un peu plus bas pour être plus concis et stable
+            max_output_tokens=8192, # Augmenté pour éviter les coupures
+            top_p=0.95,           # Ajouté pour meilleure cohérence
                 )
             )
 
