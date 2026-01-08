@@ -343,5 +343,1049 @@
             "output_response": "Mission terminée avec succès"
         },
         "status": "SUCCESS"
+    },
+    {
+        "id": "88b271f2-c1ad-4256-bb38-1b21e6fdd088",
+        "timestamp": "2026-01-08T19:13:43.582915",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9c493d3b-ecd9-4035-9544-7e04bd5f0ec8",
+        "timestamp": "2026-01-08T19:13:43.615908",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 5,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "5 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "63636927-e53f-429c-9b63-f6a034dec3a1",
+        "timestamp": "2026-01-08T19:13:43.666827",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Initialisation de l'Auditor Agent",
+            "output_response": "Erreur: GenerativeModel.__init__() got an unexpected keyword argument 'system_instruction'"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "2d9b7ca8-e5fc-4a46-8f05-a7e386113652",
+        "timestamp": "2026-01-08T19:15:04.512394",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d9f4bbb0-b7bc-4563-8328-349c97e2d815",
+        "timestamp": "2026-01-08T19:15:04.553783",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 5,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "5 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "f2915de8-95b6-4896-87e0-9deb92b7c93e",
+        "timestamp": "2026-01-08T19:15:08.324362",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 48.932170238s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 48\n}\n]",
+            "file_path": "sandbox\\buggy_calculator.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "2307bb4d-ddb2-4829-960d-aa54b1ff1de2",
+        "timestamp": "2026-01-08T19:15:10.681425",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 46.699612122s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 46\n}\n]",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "6c5695ac-9405-4a59-9b44-0d5d591a21f9",
+        "timestamp": "2026-01-08T19:15:12.930561",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 44.307942512s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 44\n}\n]",
+            "file_path": "sandbox\\buggy_file_handler.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "ddef91ee-0f57-4820-9b9e-166dd2976f56",
+        "timestamp": "2026-01-08T19:15:15.400269",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 41.864277548s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 41\n}\n]",
+            "file_path": "sandbox\\buggy_security.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "af826766-6edf-4637-977a-6ad15b79b4b4",
+        "timestamp": "2026-01-08T19:15:17.538471",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 39.833406702s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 39\n}\n]",
+            "file_path": "sandbox\\buggy_string_utils.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "a3602b2a-a821-4451-80e2-c528115e21b5",
+        "timestamp": "2026-01-08T19:15:17.598568",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 5,
+            "input_prompt": "Analyse complète de 5 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "b79b270e-0459-4d7a-886d-ec6fc8b747ff",
+        "timestamp": "2026-01-08T19:17:22.060842",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3a23bd27-a753-494a-ae01-a4027229e7cd",
+        "timestamp": "2026-01-08T19:17:22.156472",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 5,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "5 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4cc88919-7ee7-4207-9a6e-0297b585792d",
+        "timestamp": "2026-01-08T19:17:25.139233",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_calculator.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "0bff1600-e630-43ea-8f22-72a0a46b4f8c",
+        "timestamp": "2026-01-08T19:17:27.268764",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "960c77ec-0a44-48c2-8668-c0e74b269e8e",
+        "timestamp": "2026-01-08T19:17:29.594681",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_file_handler.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "b8ffa20f-c2ab-499e-8c11-4b8c226af610",
+        "timestamp": "2026-01-08T19:17:32.074345",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_security.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "957be061-5d68-410b-a398-30e05cc48d49",
+        "timestamp": "2026-01-08T19:17:33.966569",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_string_utils.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "6a313add-e3a8-431c-b455-a328672f52a2",
+        "timestamp": "2026-01-08T19:17:34.035635",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 5,
+            "input_prompt": "Analyse complète de 5 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "dbef093a-d58a-4708-b0c0-3334c48a07db",
+        "timestamp": "2026-01-08T19:18:38.904631",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "b2477fa4-a93a-46d2-b3ca-79a44acd4ce8",
+        "timestamp": "2026-01-08T19:18:38.958212",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 5,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "5 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "eefffb51-c663-4c75-ab02-996c9353db13",
+        "timestamp": "2026-01-08T19:18:41.523150",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_calculator.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "67e3631f-83a0-4928-b3ec-1f8e5ed29ae8",
+        "timestamp": "2026-01-08T19:18:43.339582",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "80f98824-5189-4225-8299-a2e50ebcf919",
+        "timestamp": "2026-01-08T19:18:45.417995",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_file_handler.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "7a15f1ba-1c0b-4a8b-8883-36dcdeb25c07",
+        "timestamp": "2026-01-08T19:18:47.655757",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_security.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "4efae8c0-ae1a-4850-813c-23b0128734ae",
+        "timestamp": "2026-01-08T19:18:49.591185",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_string_utils.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "172542ee-889a-4ef8-aa4a-391bfa8089b6",
+        "timestamp": "2026-01-08T19:18:49.639222",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 5,
+            "input_prompt": "Analyse complète de 5 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "b29cdf6a-709e-4d19-9302-1130c1ab92ac",
+        "timestamp": "2026-01-08T19:24:14.053180",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "98238a7f-b7cd-4eb5-9d0f-294c41dffb37",
+        "timestamp": "2026-01-08T19:24:14.095757",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 5,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "5 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "bc8aae2a-1ed2-4808-a8a7-3ae52d18e080",
+        "timestamp": "2026-01-08T19:24:17.048276",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 40.207532139s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 40\n}\n]",
+            "file_path": "sandbox\\buggy_calculator.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "5ae60f8f-40d6-4796-be02-0f283d29f82c",
+        "timestamp": "2026-01-08T19:24:29.798352",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 27.743305885s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 27\n}\n]",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "58ba0a59-df19-4f9c-874e-e329f4f0ea1c",
+        "timestamp": "2026-01-08T19:24:42.672517",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 14.664651539s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 14\n}\n]",
+            "file_path": "sandbox\\buggy_file_handler.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "b84f6b79-1858-4f44-bb66-9c280f9f1cdb",
+        "timestamp": "2026-01-08T19:24:55.506661",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 1.811739766s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 1\n}\n]",
+            "file_path": "sandbox\\buggy_security.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "ef3e091d-6e99-4189-a1b4-33db7009a3ea",
+        "timestamp": "2026-01-08T19:25:07.795585",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 49.544638845s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 49\n}\n]",
+            "file_path": "sandbox\\buggy_string_utils.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "1608c1cc-a0c9-4632-84e3-c6883f59e3c8",
+        "timestamp": "2026-01-08T19:25:07.876040",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 5,
+            "total_delay_time": 40,
+            "input_prompt": "Analyse complète de 5 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "43dbcbda-38e9-4639-99c4-4a0ae7ba02ff",
+        "timestamp": "2026-01-08T19:27:54.641421",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d16446ce-e876-4aee-b8ea-d3ff7e567cb4",
+        "timestamp": "2026-01-08T19:27:54.804753",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6e861a53-f45f-4621-8969-1fe91ed1a057",
+        "timestamp": "2026-01-08T19:27:57.981951",
+        "agent": "Auditor",
+        "model": "gemini-2.0-flash-exp",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-exp\nPlease retry in 59.265105941s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash-exp\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 59\n}\n]",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "bf39ac94-028d-4f2e-835d-41bf54a348b9",
+        "timestamp": "2026-01-08T19:27:58.031885",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "26a8e3e6-b9f4-4451-9fc9-5dc7c28b6bec",
+        "timestamp": "2026-01-08T19:30:11.851541",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e47e588e-3ee0-4104-bf1b-fb101ca4397f",
+        "timestamp": "2026-01-08T19:30:11.907254",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "20858159-7c8e-4e44-b4ac-5376777406c0",
+        "timestamp": "2026-01-08T19:30:14.759081",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "871d6bf1-8ed5-4342-b07c-3447386afd81",
+        "timestamp": "2026-01-08T19:30:14.802480",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d541c446-8e61-457b-a09f-45dc19b8454f",
+        "timestamp": "2026-01-08T19:31:15.364232",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "440d6b87-3b2b-4619-acd2-4a01185c7168",
+        "timestamp": "2026-01-08T19:31:15.399717",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "83f38a57-2eb5-4f1f-a10e-964afaca2b2d",
+        "timestamp": "2026-01-08T19:31:18.393332",
+        "agent": "Auditor",
+        "model": "gemini-1.5-flash-latest",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "NotFound"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "06194cb4-3e40-4a4a-9519-6d31c63e3e43",
+        "timestamp": "2026-01-08T19:31:18.439432",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ca85b47d-e804-4f31-a336-f69859643bcf",
+        "timestamp": "2026-01-08T19:35:24.325799",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 15,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "cf9d9570-dcfd-4237-9dcb-2dd520bf1e4d",
+        "timestamp": "2026-01-08T19:35:24.363223",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a952d268-7304-4d8b-a733-86825e38eabe",
+        "timestamp": "2026-01-08T19:35:27.441444",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "674e91db-b08c-4cda-9ccd-66897dbb7e70",
+        "timestamp": "2026-01-08T19:35:27.473497",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c231120d-c86c-47ca-95ef-a3256007e2e2",
+        "timestamp": "2026-01-08T19:37:58.996788",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 15,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "00f43a3b-b351-4c6b-b795-61e77dd09100",
+        "timestamp": "2026-01-08T19:37:59.050613",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "2912252c-46f1-4c80-8b67-7a53b85028f1",
+        "timestamp": "2026-01-08T19:38:01.502180",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "5cdf8d52-c4c0-4d7f-ac28-bb533d2008a4",
+        "timestamp": "2026-01-08T19:38:01.548076",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "cff8b82e-fb36-49ce-9eae-54e9f329950d",
+        "timestamp": "2026-01-08T19:39:32.071034",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 30,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "282ed2da-3583-4825-990d-eb30f44ef006",
+        "timestamp": "2026-01-08T19:39:32.112370",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c47d6a82-ab88-49dd-88c2-89443fc72559",
+        "timestamp": "2026-01-08T19:39:34.435981",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "05a21a65-7722-45f3-8c39-30d8468a8be7",
+        "timestamp": "2026-01-08T19:39:34.482530",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d612fcd6-2bf9-44f3-a506-5ab536b757e8",
+        "timestamp": "2026-01-08T19:55:15.221119",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 30,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "5bceb122-75f7-4f5c-b1b0-10de738d0494",
+        "timestamp": "2026-01-08T19:55:15.272268",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9675e2bc-76f4-474d-9284-0cdc7f9578bf",
+        "timestamp": "2026-01-08T19:55:19.769689",
+        "agent": "Auditor",
+        "model": "models/gemini-2.0-flash-lite-preview-02-05",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "AUDIT FAILED BEFORE PROMPT COMPLETION",
+            "output_response": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+            "file_path": "sandbox\\buggy_code.py",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
+    },
+    {
+        "id": "c996b908-3179-4d3c-973d-153550353161",
+        "timestamp": "2026-01-08T19:55:19.801375",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0f609b92-3ed4-489c-9112-b609ae6ae1df",
+        "timestamp": "2026-01-08T19:55:44.414835",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 30,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6d479530-d6d3-40ac-a35d-b2b5d0b7038d",
+        "timestamp": "2026-01-08T19:55:44.472895",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e9ce833f-59e3-441c-b960-8da2ebf1903c",
+        "timestamp": "2026-01-08T19:55:56.202211",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\buggy_code.py",
+            "code_length": 26,
+            "pylint_report": "************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\buggy_code.py\n\n--- CODE SOURCE ---\n```python\ndef add(a,b):\n return a-b\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## Refactoring Plan: sandbox\\buggy_code.py\n\n**Bugs by Line/File:**\n\n*   **sandbox\\buggy_code.py:1:0:** Missing module docstring. Add module-level docstring.\n*   **sandbox\\buggy_code.py:1:0:** Missing function docstring. Add function-level docstring.\n*   **sandbox\\buggy_code.py:2:0:** Incorrect indentation. Change indentation to 4 spaces.\n*   **sandbox\\buggy_code.py:2:0:** Logical error. Function subtracts instead of adding. Change `a-b` to `a+b`.\n\n**Detailed Refactoring Steps:**\n\n1.  **Indentation:** Correct indentation on line 2 to adhere to PEP 8 standards (4 spaces).\n2.  **Module Docstring:** Add a docstring at the beginning of the file describing the module's purpose.\n3.  **Function Docstring:** Add a docstring to the `add` function explaining its purpose, parameters, and return value.\n4.  **Logical Error:** Modify the `return` statement in the `add` function to perform addition (`a + b`) instead of subtraction (`a - b`).\n\n**Security/Best Practices:**\n\n*   No security vulnerabilities detected.\n*   Code is simple; no file handling or division by zero risks.\n*   Adherence to PEP 8 improves readability and maintainability."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "062e030e-6209-4fbb-b547-981ad1977b40",
+        "timestamp": "2026-01-08T19:55:56.258927",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c5336e52-15f4-48d7-8e91-743b935f3a79",
+        "timestamp": "2026-01-08T19:56:26.408344",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 30,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "38f9cc24-79e3-4fc8-8781-ca8adf9a9461",
+        "timestamp": "2026-01-08T19:56:26.456334",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1fd79091-fdf1-4412-8df0-993763acd1b5",
+        "timestamp": "2026-01-08T19:56:48.631506",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\buggy_code.py",
+            "code_length": 26,
+            "pylint_report": "************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\buggy_code.py\n\n--- CODE SOURCE ---\n```python\ndef add(a,b):\n return a-b\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] Bugs Critiques : 1 problème trouvé\n- [IMPORTANT] Problèmes Importants : 0 problèmes trouvés\n- [MINEUR] Problèmes Mineurs : 3 problèmes trouvés\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. Incorrect Function Logic\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 2\n   - Problème : The function `add` currently subtracts `b` from `a` instead of adding them. This is a logical error that will produce incorrect results.\n   - Impact : Incorrect calculations, potentially leading to errors in any system relying on this function.\n   - Correction attendue : Change `return a-b` to `return a+b`.\n\n### [IMPORTANT] Priorité IMPORTANTE\nN/A\n\n### [MINEUR] Priorité MINEURE\n1. Missing Module Docstring\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 1\n   - Problème : The module is missing a docstring explaining its purpose.\n   - Impact : Reduced code readability and maintainability.\n   - Correction attendue : Add a docstring at the beginning of the file, e.g., `\"\"\"This module provides a simple addition function.\"\"\"`.\n\n2. Missing Function Docstring\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 1\n   - Problème : The function `add` is missing a docstring explaining its purpose, parameters, and return value.\n   - Impact : Reduced code readability and maintainability.\n   - Correction attendue : Add a docstring before the function definition, e.g., `\"\"\"Adds two numbers together.\\n\\nArgs:\\n    a: The first number.\\n    b: The second number.\\n\\nReturns:\\n    The sum of a and b.\"\"\"`.\n\n3. Bad Indentation\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 2\n   - Problème : The indentation is incorrect. Pylint expects 4 spaces, but found 1.\n   - Impact : Reduced code readability and potential errors if the indentation is significant (e.g., in control flow statements).\n   - Correction attendue : Correct the indentation of line 2 to use 4 spaces.\n\n## 3. Remarques Générales\n- The code is very simple, so architectural improvements are not necessary.\n- Always include docstrings for modules and functions to improve readability and maintainability.\n- Ensure consistent indentation throughout the codebase (4 spaces is the recommended standard in Python).\n- After corrections, the estimated quality score should be around 7.00/10, assuming no other issues exist in the larger codebase."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "10661211-d802-4568-841e-16b6cadee7e8",
+        "timestamp": "2026-01-08T19:56:48.681053",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "05c198e8-4fc1-454b-ba36-e58911a80211",
+        "timestamp": "2026-01-08T20:02:27.268228",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "d30f2bfc-1343-4a86-ab3c-9e08ac031cfe",
+        "timestamp": "2026-01-08T20:02:27.313935",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a664c61c-0688-4ddb-8cbe-17d56d288fff",
+        "timestamp": "2026-01-08T20:02:51.657536",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\buggy_code.py",
+            "code_length": 26,
+            "pylint_report": "************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\buggy_code.py\n\n--- CODE SOURCE ---\n```python\ndef add(a,b):\n return a-b\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module buggy_code\nsandbox\\buggy_code.py:2:0: W0311: Bad indentation. Found 1 spaces, expected 4 (bad-indentation)\nsandbox\\buggy_code.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\buggy_code.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] Bugs Critiques : 1 problème trouvé\n- [IMPORTANT] Problèmes Importants : 0 problèmes trouvés\n- [MINEUR] Problèmes Mineurs : 3 problèmes trouvés\n\n## 2. Plan de Correction\n\n### [CRITIQUE] Priorité CRITIQUE\n1. Incorrect Function Logic\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 2\n   - Problème : The function `add` currently subtracts `b` from `a` instead of adding them. This is a logical error that will produce incorrect results.\n   - Impact : Incorrect calculations, potentially leading to errors in any system relying on this function.\n   - Correction attendue : Change `return a-b` to `return a+b`.\n\n### [IMPORTANT] Priorité IMPORTANTE\nN/A\n\n### [MINEUR] Priorité MINEURE\n1. Missing Module Docstring\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 1\n   - Problème : The module is missing a docstring explaining its purpose.\n   - Impact : Reduced code readability and maintainability.\n   - Correction attendue : Add a docstring at the beginning of the file, e.g., `\"\"\"This module provides a simple addition function.\"\"\"`.\n\n2. Missing Function Docstring\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 1\n   - Problème : The function `add` is missing a docstring explaining its purpose, parameters, and return value.\n   - Impact : Reduced code readability and maintainability.\n   - Correction attendue : Add a docstring before the function definition, e.g., `\"\"\"Adds two numbers together.\\n\\nArgs:\\n    a: The first number.\\n    b: The second number.\\n\\nReturns:\\n    The sum of a and b.\"\"\"`.\n\n3. Bad Indentation\n   - Fichier : sandbox\\buggy_code.py\n   - Ligne : 2\n   - Problème : The indentation is incorrect. Pylint expects 4 spaces, but found 1.\n   - Impact : Reduced code readability and potential errors if the indentation is significant (e.g., in control flow statements).\n   - Correction attendue : Correct the indentation of line 2 to use 4 spaces.\n\n## 3. Remarques Générales\n- The code is very simple, so architectural improvements are not necessary.\n- Always include docstrings for modules and functions to improve readability and maintainability.\n- Ensure consistent indentation throughout the codebase (4 spaces is the recommended standard in Python).\n- After corrections, the estimated quality score should be around 7.00/10, assuming no other issues exist in the larger codebase."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "44acb110-869f-4a1a-8e1b-ad0f93084d3f",
+        "timestamp": "2026-01-08T20:02:51.706631",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "SUCCESS"
     }
 ]

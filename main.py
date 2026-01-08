@@ -1,6 +1,7 @@
 import argparse
 import sys
 import os
+import time
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -9,9 +10,13 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
+# Configuration du délai entre les requêtes (en secondes)
+DELAY_BETWEEN_REQUESTS = 10  # 10 secondes par défaut
+
 def main():
     parser = argparse.ArgumentParser(description="Refactoring Swarm - Analyse automatique de code Python")
     parser.add_argument("--target_dir", type=str, required=True, help="Dossier contenant les fichiers Python à analyser")
+    parser.add_argument("--delay", type=int, default=DELAY_BETWEEN_REQUESTS, help="Délai en secondes entre chaque fichier (défaut: 10)")
     args = parser.parse_args()
 
     # Vérifier que le dossier existe
@@ -20,12 +25,15 @@ def main():
         sys.exit(1)
 
     print(f"DEMARRAGE SUR : {args.target_dir}")
+    print(f"Délai entre fichiers : {args.delay} secondes\n")
+    
     log_experiment(
         agent_name="System",
         model_used="N/A",
         action=ActionType.ANALYSIS,
         details={
             "target_dir": args.target_dir,
+            "delay_seconds": args.delay,
             "input_prompt": f"Scan du dossier {args.target_dir}",
             "output_response": "Démarrage du système"
         },
@@ -52,7 +60,7 @@ def main():
         )
         sys.exit(0)
 
-    print(f"Fichiers Python trouvés : {len(python_files)}")
+    print(f"Fichiers Python trouvés : {len(python_files)}\n")
     log_experiment(
         agent_name="System",
         model_used="N/A",
@@ -69,7 +77,7 @@ def main():
     # Initialiser l'auditeur
     try:
         auditor = AuditorAgent()
-        print(f"Auditor Agent initialisé : {auditor.model_name}")
+        print(f"Auditor Agent initialisé : {auditor.model_name}\n")
     except Exception as e:
         print(f"Erreur lors de l'initialisation de l'Auditor : {e}")
         log_experiment(
@@ -84,19 +92,32 @@ def main():
         )
         sys.exit(1)
 
-    # Analyser chaque fichier
+    # Analyser chaque fichier avec délai entre les requêtes
     results = {}
-    for file_path in python_files:
-        print(f"\nAnalyse de : {file_path.name}")
+    total_files = len(python_files)
+    
+    for index, file_path in enumerate(python_files, start=1):
+        print(f"[{index}/{total_files}] Analyse de : {file_path.name}")
         
         try:
             plan = auditor.audit(str(file_path))
             results[str(file_path)] = plan
-            print(f"Analyse terminée : {file_path.name}")
+            print(f"✓ Analyse terminée : {file_path.name}")
+            
+            # Attendre entre les requêtes (sauf pour le dernier fichier)
+            if index < total_files:
+                print(f" Attente de {args.delay} secondes pour respecter les limites API...\n")
+                time.sleep(args.delay)
+            
         except Exception as e:
             error_msg = f"Erreur lors de l'analyse de {file_path.name}: {str(e)}"
-            print(error_msg)
+            print(f"✗ {error_msg}")
             results[str(file_path)] = error_msg
+            
+            # Attendre même en cas d'erreur (sauf pour le dernier fichier)
+            if index < total_files:
+                print(f" Attente de {args.delay} secondes avant le prochain fichier...\n")
+                time.sleep(args.delay)
 
     # Afficher les résultats
     print("\n" + "="*70)
@@ -117,6 +138,7 @@ def main():
         action=ActionType.ANALYSIS,
         details={
             "files_analyzed": len(results),
+            "total_delay_time": (total_files - 1) * args.delay,
             "input_prompt": f"Analyse complète de {len(results)} fichiers",
             "output_response": "Mission terminée avec succès"
         },

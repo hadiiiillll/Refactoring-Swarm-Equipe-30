@@ -1,5 +1,5 @@
 import os
-from groq import Groq
+import google.generativeai as genai
 from dotenv import load_dotenv
 
 from src.utils.tools import run_pylint, read_file
@@ -7,7 +7,7 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
-DEFAULT_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct"
+DEFAULT_MODEL = "gemma-3-27b-it"
 
 class AuditorAgent:
     """
@@ -20,12 +20,13 @@ class AuditorAgent:
 
     def __init__(self, model_name: str = DEFAULT_MODEL):
         # Vérifie la clé API
-        api_key = os.getenv("GROQ_API_KEY")
+        api_key = os.getenv("GOOGLE_API_KEY")
         if not api_key:
-            raise EnvironmentError("GROQ_API_KEY manquante dans le fichier .env")
+            raise EnvironmentError("GOOGLE_API_KEY manquante dans le fichier .env")
 
-        # Configuration Groq client
-        self.client = Groq(api_key=api_key)
+        # Configuration Gemini
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel(model_name=model_name)
 
         self.name = "Auditor"
         self.model_name = model_name
@@ -62,20 +63,21 @@ class AuditorAgent:
                 "4. Les violations des bonnes pratiques Python"
             )
 
-            # 4. Appel au modèle Groq (chat completions)
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=[
-                    {"role": "system", "content": self.system_prompt},
-                    {"role": "user", "content": user_content}
-                ],
-                temperature=0.3,  # Low for more deterministic refactoring plans
-                max_tokens=3072,  # Augmenté pour les analyses plus détaillées
+            # 4. Construire le prompt complet (system + user)
+            full_prompt = f"{self.system_prompt}\n\n{user_content}"
+
+            # 5. Appel au modèle Gemini
+            response = self.model.generate_content(
+                full_prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.3,
+                    max_output_tokens=3072,
+                )
             )
 
-            refactoring_plan = response.choices[0].message.content.strip()
+            refactoring_plan = response.text.strip()
 
-            # 5. Logging strict
+            # 6. Logging strict
             log_experiment(
                 agent_name=self.name,
                 model_used=self.model_name,
