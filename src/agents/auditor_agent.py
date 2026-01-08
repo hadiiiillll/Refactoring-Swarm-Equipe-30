@@ -7,10 +7,10 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
-DEFAULT_MODEL = "gemini-2.5-flash"
+# Définition de modèle,remarque si vous trouverez de problèmes de quota remplacez gemini-2.5-flash par gemma-3-27b-it
+DEFAULT_MODEL = "gemini-2.5-flash"  
 
 class AuditorAgent:
-    
     """
     Agent Auditeur :
     - Analyse statique avec Pylint
