@@ -1,11 +1,23 @@
 [
-  {
-    "id": "9e82e9b0-9b43-4a78-af43-d5d5ef848a2f",
-    "timestamp": "2025-12-26T01:26:41.177789",
-    "agent": "System",
-    "model": "unknown",
-    "action": "STARTUP",
-    "details": "Target: ./sandbox",
-    "status": "INFO"
-  }
+    {
+        "id": "9e82e9b0-9b43-4a78-af43-d5d5ef848a2f",
+        "timestamp": "2025-12-26T01:26:41.177789",
+        "agent": "System",
+        "model": "unknown",
+        "action": "STARTUP",
+        "details": "Target: ./sandbox",
+        "status": "INFO"
+    },
+    {
+        "id": "17dca901-0438-4040-829b-02be8a931f08",
+        "timestamp": "2026-01-05T20:06:07.060386",
+        "agent": "Auditor",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "input_prompt": "Analyse ce fichier Python",
+            "output_response": "Le fichier contient 2 erreurs et pas de docstring."
+        },
+        "status": "SUCCESS"
+    }
 ]
