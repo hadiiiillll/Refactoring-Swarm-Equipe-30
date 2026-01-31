@@ -1,0 +1,22 @@
+## 1. Analyse des Problèmes
+- [CRITIQUE] : 2 problèmes
+- [IMPORTANT] : 4 problèmes
+- [MINEUR] : 0 problèmes
+
+## 2. Plan de Correction
+
+### [CRITIQUE]
+1.  [Syntax Error] - Ligne 2: Erreur d'indentation après la définition de fonction `add` (Pylint E0001). → Corriger l'indentation de la ligne 2 pour que le corps de la fonction soit correctement indenté.
+2.  [Bug Logique] - Ligne 25: Appel direct à `divide` avec un dénominateur nul, provoquant une `ZeroDivisionError`. → Modifier l'appel pour éviter la division par zéro ou encadrer l'appel par un bloc `try-except`.
+
+### [IMPORTANT]
+1.  [Mauvaise Pratique] - Ligne 13: Manque de vérification du dénominateur dans la fonction `divide`. → Ajouter une gestion d'erreur (ex: lever une `ValueError` ou retourner un indicateur d'erreur) pour éviter la division par zéro.
+2.  [Mauvaise Pratique] - Ligne 5: Variable `result` inutile dans la fonction `subtract`. → Supprimer la variable intermédiaire et retourner directement le résultat de l'opération.
+3.  [Style/Doc] - Lignes 1, 4, 8, 17, 20: Docstrings manquantes pour les fonctions `add`, `subtract`, `multiply` et les méthodes `__init__`, `square`. → Ajouter des docstrings explicatives pour chaque fonction et méthode.
+4.  [Style/Doc] - Ligne 16: Docstring manquante pour la classe `MathOperations`. → Ajouter une docstring pour la classe décrivant son rôle.
+
+### [MINEUR]
+*(Aucun problème mineur distinct après regroupement des docstrings dans IMPORTANT)*
+
+## 3. Remarques
+La correction de l'erreur d'indentation est primordiale pour permettre l'exécution du code et une analyse Pylint complète. La gestion des divisions par zéro est un point critique de robustesse à adresser en priorité. L'ajout de docstrings améliorera significativement la maintenabilité et la compréhension du code.
