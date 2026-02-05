@@ -1,0 +1,19 @@
+## 1. Analyse des Problèmes
+- [CRITIQUE] : 1 problème
+- [IMPORTANT] : 1 problème
+- [MINEUR] : 2 problèmes
+
+## 2. Plan de Correction
+
+### [CRITIQUE]
+1. Type checking incorrect - Ligne 7 : `isinstance(n)` vérifie si `n` est un type, pas si c'est un nombre → Utiliser `isinstance(n, (int, float))` pour vérifier si `n` est un entier ou un flottant.
+
+### [IMPORTANT]
+1. Manque de gestion des types - Ligne 7 : Le code ne gère pas correctement les types non numériques → Ajouter une exception pour les types non pris en charge.
+
+### [MINEUR]
+1. Trailing whitespace - Ligne 15 : Espace inutile à la fin de la ligne → Supprimer l'espace.
+2. Missing final newline - Ligne 16 : Fichier sans nouvelle ligne finale → Ajouter une nouvelle ligne à la fin du fichier.
+
+## 3. Remarques
+Le code actuel est vulnérable aux erreurs de type et pourrait planter si une valeur non numérique est passée en argument. Améliorer la validation des entrées et la gestion des erreurs rendra le code plus robuste.

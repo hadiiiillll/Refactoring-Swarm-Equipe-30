@@ -1,4 +1,5 @@
 import argparse
+from importlib.metadata import files
 import sys
 import os
 import time
@@ -7,6 +8,7 @@ from dotenv import load_dotenv
 
 from src.agents.auditor_agent import AuditorAgent
 from src.agents.fixateur_agent import FixateurAgent
+from src.agents.testeur_agent import AgentTesteur
 from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
@@ -176,6 +178,7 @@ def main():
 
     for file_path in python_files:
         print(f"\nCorrection de : {Path(file_path).name}")
+        
         try:
             result = fixateur.fix(str(file_path))
             fix_results[str(file_path)] = result
@@ -189,9 +192,33 @@ def main():
             error_msg = f"Erreur lors de la correction de {Path(file_path).name}: {str(e)}"
             print(error_msg)
             fix_results[str(file_path)] = {"status": "error", "message": error_msg}
+    # ================================
+    # Phase des tests après correction
+    # ================================
+    print("\n" + "=" * 70)
+    print("DEMARRAGE DES TESTS POST-CORRECTION")
+    print("=" * 70)
+    
+    
+    """Fonction principale pour tester l'agent de manière autonome."""
+    print("🚀 Démarrage de l'Agent Testeur")
+    
+    # Créer l'agent
+    testeur = AgentTesteur(log_file="test_logs.json")
+    
+    # Chemin des tests (modifiable via argument)
+    test_path = sys.argv[1] if len(sys.argv) > 1 else "tests/"
+    
+    # Exécuter le cycle complet
+    validation = testeur.run_full_test_cycle(test_path)
+    
+    # Retourner le code de sortie approprié
+    sys.exit(0 if validation['status'] == 'SUCCESS' else 1)
 
-    # ============================
-    # RAPPORT FINAL
+
+
+    # ================================
+    #         RAPPORT FINAL
     # ============================
     successful = sum(1 for r in fix_results.values() if r.get("status") == "success")
     failed = len(fix_results) - successful
@@ -214,6 +241,7 @@ def main():
             "input_prompt": f"Analyse complète de {len(results)} fichiers",
             "output_response": "Mission terminée avec succès"
         },
+
         status="SUCCESS"
     )
 

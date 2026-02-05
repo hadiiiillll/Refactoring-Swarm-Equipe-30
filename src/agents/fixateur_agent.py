@@ -6,9 +6,6 @@ from src.utils.logger import log_experiment, ActionType
 
 load_dotenv()
 
-# Définition de modèle,remarque si vous trouverez de problèmes de quota remplacez gemini-2.5-flash par gemma-3-27b-it
-DEFAULT_MODEL = "gemini-2.5-flash"  
-
 
 class FixateurAgent:
     """
@@ -16,12 +13,12 @@ class FixateurAgent:
     en utilisant les rapports d'audit générés par l'AuditorAgent.
     """
     
-    def __init__(self, model_name: str = DEFAULT_MODEL):
+    def __init__(self, model_name: str =  "gemma-3-27b-it" ):
         """
         Initialise le Fixateur Agent.
         
         Args:
-            model_name: Le modèle Gemini à utiliser
+            model_name: Le modèle Groq à utiliser
         """
         self.model_name = model_name
         api_key = os.getenv("GOOGLE_API_KEY")
@@ -29,9 +26,7 @@ class FixateurAgent:
         if not api_key:
             raise ValueError("GOOGLE_API_KEY n'est pas définie dans les variables d'environnement")
         
-        # Configuration Gemini
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(model_name=self.model_name)
         
         # Charger le prompt système
         self.system_prompt = self._load_system_prompt()
@@ -130,7 +125,7 @@ class FixateurAgent:
             return {"status": "error", "message": error_msg}
         
         # 3. Construire le prompt utilisateur
-        user_content = f"""
+        user_prompt = f"""
 FICHIER À CORRIGER : {Path(file_path).name}
 
 CODE BUGUÉ :
@@ -146,23 +141,27 @@ Retourne UNIQUEMENT le code Python corrigé, sans explications supplémentaires.
 """
         
         print(f"✓ Prompt construit")
-        print(f"📤 Envoi de la requête à Gemini {self.model_name}...")
+        print(f"📤 Envoi de la requête à Groq {self.model_name}...")
         
-        # 4. Appeler Gemini pour obtenir le code corrigé
+        # 4. Appeler Groq pour obtenir le code corrigé
         try:
-            # Construire le prompt complet (system + user)
-            full_prompt = f"{self.system_prompt}\n\n{user_content}"
-            
-            response = self.model.generate_content(
-                full_prompt,
-                generation_config=genai.types.GenerationConfig(
-                    temperature=0.2,
-                    max_output_tokens=8192,
-                    top_p=0.95,
-                )
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": self.system_prompt
+                    },
+                    {
+                        "role": "user",
+                        "content": user_prompt
+                    }
+                ],
+                temperature=0.3,
+                max_tokens=8000
             )
             
-            fixed_code = response.text.strip()
+            fixed_code = response.choices[0].message.content
             print(f"✓ Code corrigé reçu ({len(fixed_code)} caractères)")
             
             # Nettoyer le code (enlever les balises markdown si présentes)
@@ -174,7 +173,7 @@ Retourne UNIQUEMENT le code Python corrigé, sans explications supplémentaires.
             print(f"✓ Code nettoyé")
             
         except Exception as e:
-            error_msg = f"Erreur lors de l'appel à Gemini : {str(e)}"
+            error_msg = f"Erreur lors de l'appel à Groq : {str(e)}"
             print(f"✗ {error_msg}")
             log_experiment(
                 agent_name="FixateurAgent",
@@ -182,9 +181,8 @@ Retourne UNIQUEMENT le code Python corrigé, sans explications supplémentaires.
                 action=ActionType.ANALYSIS,
                 details={
                     "file_path": file_path,
-                    "input_prompt": user_content[:500] + "...",
-                    "output_response": error_msg,
-                    "error_type": type(e).__name__
+                    "input_prompt": user_prompt[:500] + "...",
+                    "output_response": error_msg
                 },
                 status="FAILURE"
             )
@@ -203,7 +201,7 @@ Retourne UNIQUEMENT le code Python corrigé, sans explications supplémentaires.
                 details={
                     "file_path": file_path,
                     "audit_file": str(audit_file),
-                    "input_prompt": user_content[:500] + "...",
+                    "input_prompt": user_prompt[:500] + "...",
                     "output_response": f"Code corrigé avec succès ({len(fixed_code)} caractères)",
                     "code_length_before": len(buggy_code),
                     "code_length_after": len(fixed_code)
@@ -228,7 +226,7 @@ Retourne UNIQUEMENT le code Python corrigé, sans explications supplémentaires.
                 action=ActionType.ANALYSIS,
                 details={
                     "file_path": file_path,
-                    "input_prompt": user_content[:500] + "...",
+                    "input_prompt": user_prompt[:500] + "...",
                     "output_response": error_msg
                 },
                 status="FAILURE"

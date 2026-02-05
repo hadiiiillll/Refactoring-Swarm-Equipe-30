@@ -1,0 +1,35 @@
+[
+  {
+    "timestamp": "2026-02-05T23:42:28.672051",
+    "agent": "Testeur",
+    "success": false,
+    "test_path": "--target_dir",
+    "test_results": {
+      "passed": 0,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "total": 0
+    },
+    "output": "C:\\Users\\hp\\Documents\\refactoring-swarm-template\\venv\\Lib\\site-packages\\_pytest\\config\\__init__.py:331: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.\nPlugin: helpconfig, Hook: pytest_cmdline_parse\nUsageError: usage: pytest [options] [file_or_dir] [file_or_dir] [...]\npytest: error: unrecognized arguments: --target_dir\n  inifile: None\n  rootdir: C:\\Users\\hp\\Documents\\refactoring-swarm-template\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nERROR: usage: pytest [options] [file_or_dir] [file_or_dir] [...]\npytest: error: unrecognized arguments: --target_dir\n  inifile: None\n  rootdir: C:\\Users\\hp\\Documents\\refactoring-swarm-template\n\n",
+    "error": null
+  },
+  {
+    "timestamp": "2026-02-05T23:42:28.673796",
+    "agent": "Testeur",
+    "action": "Validation",
+    "validation": {
+      "status": "FAILED",
+      "message": "Des tests ont échoué",
+      "next_action": "SEND_TO_FIXER",
+      "error_logs": "C:\\Users\\hp\\Documents\\refactoring-swarm-template\\venv\\Lib\\site-packages\\_pytest\\config\\__init__.py:331: PluggyTeardownRaisedWarning: A plugin raised an exception during an old-style hookwrapper teardown.\nPlugin: helpconfig, Hook: pytest_cmdline_parse\nUsageError: usage: pytest [options] [file_or_dir] [file_or_dir] [...]\npytest: error: unrecognized arguments: --target_dir\n  inifile: None\n  rootdir: C:\\Users\\hp\\Documents\\refactoring-swarm-template\nFor more information see https://pluggy.readthedocs.io/en/stable/api_reference.html#pluggy.PluggyTeardownRaisedWarning\n  config = pluginmanager.hook.pytest_cmdline_parse(\nERROR: usage: pytest [options] [file_or_dir] [file_or_dir] [...]\npytest: error: unrecognized arguments: --target_dir\n  inifile: None\n  rootdir: C:\\Users\\hp\\Documents\\refactoring-swarm-template\n\n",
+      "test_results": {
+        "passed": 0,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "total": 0
+      }
+    }
+  }
+]
