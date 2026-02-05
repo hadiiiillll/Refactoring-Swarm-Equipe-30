@@ -5011,5 +5011,62 @@
             "output_response": "Erreur lors de l'appel à Groq : 'FixateurAgent' object has no attribute 'client'"
         },
         "status": "FAILURE"
+    },
+    {
+        "id": "52ed876c-0d03-4e79-bf88-ca63bfbe8cb1",
+        "timestamp": "2026-02-05T23:53:56.541821",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "fadc0ad2-0ed1-4d4c-b678-7ad3ca65b58d",
+        "timestamp": "2026-02-05T23:53:56.555124",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox\\.",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ffaec9e9-5c0c-4d60-a792-e31b9d77a3c7",
+        "timestamp": "2026-02-05T23:54:01.402784",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 94,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:3:25: E0001: Parsing failed: ''(' was never closed (<unknown>, line 3)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Division par zéro\"\n    return a / b\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:3:25: E0001: Parsing failed: ''(' was never closed (<unknown>, line 3)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problèmes\n- [MINEUR] : 1 problème\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Syntax Error - Ligne 3 : Parenthèse non fermée dans le `raise ValueError` → Fermer la parenthèse après la chaîne de caractères.\n\n### [MINEUR]\n1. Docstring manquante - Ligne 1 : Fonction `divide` sans docstring → Ajouter une docstring expliquant le rôle de la fonction, ses arguments et sa valeur de retour.\n\n## 3. Remarques\nLe code contient une erreur de syntaxe critique qui empêche son exécution. Corriger cette erreur est la priorité absolue. Ajouter une docstring améliorera la lisibilité et la maintenabilité du code."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "b492e73e-2ff1-4b56-b842-6a9d4a23d954",
+        "timestamp": "2026-02-05T23:54:01.651071",
+        "agent": "FixateurAgent",
+        "model": "gemini-2.5-flash",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Division par zéro\"\n    return a / b\n```\n\nRAPPORT D'AUDIT :\n## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problèmes\n- [MINEUR] : 1 problème\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Syntax Error - Ligne 3 : Parenthèse non fermée dans le `raise ValueError` → Fermer la parenthèse après la chaîne de caractères.\n\n### [MINEUR]\n1. Docstring manquante - Ligne ...",
+            "output_response": "Erreur lors de l'appel à Gemini : 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ",
+            "error_type": "ResourceExhausted"
+        },
+        "status": "FAILURE"
     }
 ]
