@@ -5068,5 +5068,791 @@
             "error_type": "ResourceExhausted"
         },
         "status": "FAILURE"
+    },
+    {
+        "id": "0d4b7808-e52c-432e-a2e3-bf304d904ad7",
+        "timestamp": "2026-02-07T20:43:08.611311",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e69c79df-9258-4e68-9846-79d09ae8898a",
+        "timestamp": "2026-02-07T20:43:08.633569",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox\\.",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ba405213-695a-4328-ad0d-2467eb5949e8",
+        "timestamp": "2026-02-07T20:43:17.924825",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 94,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:3:25: E0001: Parsing failed: ''(' was never closed (<unknown>, line 3)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Division par zéro\"\n    return a / b\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:3:25: E0001: Parsing failed: ''(' was never closed (<unknown>, line 3)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problèmes\n- [MINEUR] : 1 problème\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Syntax Error - Ligne 3 : Parenthèse non fermée dans le `raise ValueError` → Fermer la parenthèse après la chaîne de caractères.\n\n### [MINEUR]\n1. Docstring manquante - Ligne 1 : Fonction `divide` sans docstring → Ajouter une docstring expliquant le rôle de la fonction, ses arguments et sa valeur de retour.\n\n## 3. Remarques\nLe code contient une erreur de syntaxe critique qui empêche son exécution. Corriger cette erreur est la priorité absolue. Ajouter une docstring améliorera la lisibilité et la maintenabilité du code."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "32583300-4a72-4bac-9980-aec69b8e23dd",
+        "timestamp": "2026-02-07T20:43:30.012416",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Division par zéro\"\n    return a / b\n```\n\nRAPPORT D'AUDIT :\n## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problèmes\n- [MINEUR] : 1 problème\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Syntax Error - Ligne 3 : Parenthèse non fermée dans le `raise ValueError` → Fermer la parenthèse après la chaîne de caractères.\n\n### [MINEUR]\n1. Docstring manquante - Ligne ...",
+            "output_response": "Code corrigé avec succès (37 caractères)",
+            "code_length_before": 94,
+            "code_length_after": 37
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0e3a767e-df20-430d-8862-4d3c76070812",
+        "timestamp": "2026-02-07T20:43:41.571269",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\nraise ValueError(\"Division par zéro\")\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:43:31.370894\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les recom...",
+            "output_response": "Code corrigé avec succès (80 caractères)",
+            "code_length_before": 37,
+            "code_length_after": 80
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ac23bf08-00f3-4efe-b52e-5bd6443b13a8",
+        "timestamp": "2026-02-07T20:43:50.582490",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef function(x, y):\n    if y == 0:\n        raise ValueError(\"Division par zéro\")\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:43:41.661007\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x,...",
+            "output_response": "Code corrigé avec succès (80 caractères)",
+            "code_length_before": 80,
+            "code_length_after": 80
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "57b46890-073e-4997-8dd9-423f2a1ddfaf",
+        "timestamp": "2026-02-07T20:44:02.119572",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef function(x, y):\n    if y == 0:\n        raise ValueError(\"Division par zéro\")\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:43:50.839406\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x,...",
+            "output_response": "Code corrigé avec succès (80 caractères)",
+            "code_length_before": 80,
+            "code_length_after": 80
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a8ab3551-4e33-41e5-a397-8d8374ba91a7",
+        "timestamp": "2026-02-07T20:44:13.162467",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef function(x, y):\n    if y == 0:\n        raise ValueError(\"Division par zéro\")\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:44:02.214605\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x,...",
+            "output_response": "Code corrigé avec succès (80 caractères)",
+            "code_length_before": 80,
+            "code_length_after": 80
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "db5bb432-9dca-4c41-a9dd-0e76286931a5",
+        "timestamp": "2026-02-07T20:44:13.429540",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_fixed": 1,
+            "files_validated": 0,
+            "files_failed": 1,
+            "total_iterations": 5,
+            "avg_iterations": 5.0,
+            "files_fixed_first_try": 0,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "PARTIAL_SUCCESS"
+    },
+    {
+        "id": "0cfe2e27-d6ef-448e-90b6-90ab5cfe7248",
+        "timestamp": "2026-02-07T20:57:51.469848",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "08b2bf89-e370-4e9a-81b9-201bc0158762",
+        "timestamp": "2026-02-07T20:57:51.484553",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox\\.",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "022f0ded-a064-49cd-99f3-082d52dbd86a",
+        "timestamp": "2026-02-07T20:58:02.461550",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 720,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:22:11: E0001: Parsing failed: 'unterminated string literal (detected at line 22) (<unknown>, line 22)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\n\"\"\"\nFichier 1 - ERREURS DE SYNTAXE\nCe fichier contient des erreurs qui empêchent l'exécution\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef calculer_somme(a, b)\n    return a + b\n\n# Erreur 2: Parenthèse non fermée\ndef afficher_message(nom):\n    print(f\"Bonjour {nom}\"\n\n# Erreur 3: Indentation incorrecte\ndef verifier_age(age):\nif age >= 18:\n    return \"Majeur\"\nelse:\n    return \"Mineur\"\n\n# Erreur 4: Guillemet non fermé\nmessage = \"Ceci est un test\n\n# Erreur 5: Import inexistant\nimport module_qui_nexiste_pas\n\n# Erreur 6: Virgule manquante\ndef creer_liste():\n    return [1, 2 3, 4, 5]\n\n# Erreur 7: Opérateur invalide\nresultat = 10 ++ 5\n\n# Erreur 8: Parenthèse fermante en trop\ndef multiplier(x, y):\n    return (x * y))\n\n\n\n\n\n\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:22:11: E0001: Parsing failed: 'unterminated string literal (detected at line 22) (<unknown>, line 22)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 7 problèmes\n- [IMPORTANT] : 1 problème\n- [MINEUR] : 0 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Deux-points manquants - Ligne 2 : `def calculer_somme(a, b)` → Ajouter deux-points à la fin de la définition de la fonction.\n2. Parenthèse non fermée - Ligne 6 : `print(f\"Bonjour {nom}\"` → Fermer la parenthèse de la fonction `print`.\n3. Indentation incorrecte - Ligne 9 : `if age >= 18:` → Corriger l'indentation de la condition `if`.\n4. Guillemet non fermé - Ligne 13 : `message = \"Ceci est un test` → Fermer le guillemet de la chaîne de caractères.\n5. Import inexistant - Ligne 16 : `import module_qui_nexiste_pas` → Supprimer l'importation du module inexistant ou importer un module valide.\n6. Virgule manquante - Ligne 19 : `return [1, 2 3, 4, 5]` → Ajouter une virgule entre 2 et 3 dans la liste.\n7. Opérateur invalide - Ligne 22 : `resultat = 10 ++ 5` → Remplacer `++` par un opérateur valide (ex: `+`).\n8. Parenthèse fermante en trop - Ligne 25 : `return (x * y))` → Supprimer la parenthèse fermante en trop.\n\n### [IMPORTANT]\n1. Absence de gestion d'erreur - Ligne 16 : Importation d'un module inexistant peut causer un crash → Implémenter une gestion d'erreur (try-except) pour l'importation.\n\n### [MINEUR]\nN/A\n\n## 3. Remarques\nLe code contient de nombreuses erreurs de syntaxe qui empêchent son exécution. Corriger ces erreurs est la priorité absolue.  Ajouter des docstrings et des commentaires améliorerait la lisibilité du code."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0705a9c7-6710-4a9b-ba79-42b090140821",
+        "timestamp": "2026-02-07T20:58:12.530998",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 1 - ERREURS DE SYNTAXE\nCe fichier contient des erreurs qui empêchent l'exécution\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef calculer_somme(a, b)\n    return a + b\n\n# Erreur 2: Parenthèse non fermée\ndef afficher_message(nom):\n    print(f\"Bonjour {nom}\"\n\n# Erreur 3: Indentation incorrecte\ndef verifier_age(age):\nif age >= 18:\n    return \"Majeur\"\nelse:\n    return \"Mineur\"\n\n# Erreur 4: Guillemet non fermé\nmessage = \"Ceci est un test...",
+            "output_response": "Code corrigé avec succès (833 caractères)",
+            "code_length_before": 720,
+            "code_length_after": 833
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "02540ab6-460d-46d7-b86e-3f3a3226e15e",
+        "timestamp": "2026-02-07T20:58:32.198807",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 1 - ERREURS DE SYNTAXE\nCe fichier contient des erreurs qui empêchent l'exécution\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef calculer_somme(a, b):\n    return a + b\n\n# Erreur 2: Parenthèse non fermée\ndef afficher_message(nom):\n    print(f\"Bonjour {nom}\")\n\n# Erreur 3: Indentation incorrecte\ndef verifier_age(age):\n    if age >= 18:\n        return \"Majeur\"\n    else:\n        return \"Mineur\"\n\n# Erreur 4: Guillemet non fermé\nmessage =...",
+            "output_response": "Code corrigé avec succès (831 caractères)",
+            "code_length_before": 833,
+            "code_length_after": 831
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "75ecd91d-8c0c-403a-aeb0-f53159be7577",
+        "timestamp": "2026-02-07T20:58:50.044359",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 1 - ERREURS DE SYNTAXE\nCe fichier contient des erreurs qui empêchent l'exécution\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef calculer_somme(a, b):\n    return a + b\n\n# Erreur 2: Parenthèse non fermée\ndef afficher_message(nom):\n    print(f\"Bonjour {nom}\")\n\n# Erreur 3: Indentation incorrecte\ndef verifier_age(age):\n    if age >= 18:\n        return \"Majeur\"\n    else:\n        return \"Mineur\"\n\n# Erreur 4: Guillemet non fermé\nmessage =...",
+            "output_response": "Code corrigé avec succès (38 caractères)",
+            "code_length_before": 831,
+            "code_length_after": 38
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "aa339f41-4f34-47f1-a21f-8e26154423ee",
+        "timestamp": "2026-02-07T20:58:57.491302",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef multiplier(x, y):\n    return x * y\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:58:50.158939\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les reco...",
+            "output_response": "Code corrigé avec succès (38 caractères)",
+            "code_length_before": 38,
+            "code_length_after": 38
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "24e0aa55-07aa-43e1-9f23-6bfbaabe868f",
+        "timestamp": "2026-02-07T20:59:04.435316",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef multiplier(x, y):\n    return x * y\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T20:58:58.165875\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les reco...",
+            "output_response": "Code corrigé avec succès (38 caractères)",
+            "code_length_before": 38,
+            "code_length_after": 38
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "ffb35fea-1756-4d6e-acd0-373b3a948d26",
+        "timestamp": "2026-02-07T20:59:04.551908",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_fixed": 1,
+            "files_validated": 0,
+            "files_failed": 1,
+            "total_iterations": 5,
+            "avg_iterations": 5.0,
+            "files_fixed_first_try": 0,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "PARTIAL_SUCCESS"
+    },
+    {
+        "id": "93efe7cb-fae3-4579-872d-a37abc74d175",
+        "timestamp": "2026-02-07T20:59:53.695122",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "66089371-a1ad-4741-9af8-57c5ca38e6a3",
+        "timestamp": "2026-02-07T20:59:53.711204",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox\\.",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "2d25b977-ae0e-4626-992c-df5ab63aefb3",
+        "timestamp": "2026-02-07T21:00:06.736848",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 464,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:7:19: E0001: Parsing failed: 'expected ':' (<unknown>, line 7)' (syntax-error)\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\n\"\"\"\nFichier 6 - ERREURS SIMPLES POUR TEST RAPIDE\nJuste quelques erreurs faciles à corriger\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef addition(a, b)\n    return a + b\n\n# Erreur 2: Logique inversée\ndef is_pair(n):\n    return n % 2 == 1  # Retourne True pour impairs!\n\n# Erreur 3: Division par zéro\ndef moyenne(notes):\n    return sum(notes) / 0\n\n# Test\nif __name__ == \"__main__\":\n    print(addition(5, 3))\n    print(is_pair(4))\n    print(moyenne([10, 15, 20]))\n\n\n\n\n\n\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:7:19: E0001: Parsing failed: 'expected ':' (<unknown>, line 7)' (syntax-error)\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 3 problèmes\n- [IMPORTANT] : 1 problème\n- [MINEUR] : 0 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Syntaxe invalide - Ligne 7 : Manque deux-points à la fin de la définition de la fonction `addition` → Ajouter ':' à la fin de la ligne.\n2. Bug logique - Ligne 11 : `is_pair` retourne `True` pour les nombres impairs → Inverser la condition à `return n % 2 == 0`.\n3. Division par zéro - Ligne 15 : Division par 0 dans la fonction `moyenne` → Ajouter une condition pour vérifier si la longueur de `notes` est nulle avant de diviser.\n\n### [IMPORTANT]\n1. Absence de gestion d'erreur - Ligne 15 : Pas de gestion d'erreur si la liste `notes` est vide → Ajouter une gestion d'exception `ZeroDivisionError` ou vérifier la longueur de la liste.\n\n### [MINEUR]\nN/A\n\n## 3. Remarques\nLe code contient des erreurs de syntaxe et des bugs logiques critiques qui doivent être corrigés en priorité.  Ajouter des tests unitaires améliorerait la robustesse du code."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "79c13882-503c-4e7a-ac18-8754abc549bc",
+        "timestamp": "2026-02-07T21:00:23.621302",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 6 - ERREURS SIMPLES POUR TEST RAPIDE\nJuste quelques erreurs faciles à corriger\n\"\"\"\n\n# Erreur 1: Deux-points manquants\ndef addition(a, b)\n    return a + b\n\n# Erreur 2: Logique inversée\ndef is_pair(n):\n    return n % 2 == 1  # Retourne True pour impairs!\n\n# Erreur 3: Division par zéro\ndef moyenne(notes):\n    return sum(notes) / 0\n\n# Test\nif __name__ == \"__main__\":\n    print(addition(5, 3))\n    print(is_pair(4))\n    print(moyenne...",
+            "output_response": "Code corrigé avec succès (36 caractères)",
+            "code_length_before": 464,
+            "code_length_after": 36
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "db0b6130-3421-4312-b381-c8722ed21e40",
+        "timestamp": "2026-02-07T21:00:29.268275",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef addition(a, b):\n    return a + b\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T21:00:23.839768\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les recomm...",
+            "output_response": "Code corrigé avec succès (36 caractères)",
+            "code_length_before": 36,
+            "code_length_after": 36
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "98c30e4b-871f-468d-aa78-27c0bf6ebbb1",
+        "timestamp": "2026-02-07T21:00:38.077537",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef addition(a, b):\n    return a + b\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T21:00:29.413801\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les recomm...",
+            "output_response": "Code corrigé avec succès (36 caractères)",
+            "code_length_before": 36,
+            "code_length_after": 36
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "4cbefc97-57c2-418f-a49e-672ac619b317",
+        "timestamp": "2026-02-07T21:00:45.410752",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef addition(a, b):\n    return a + b\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T21:00:38.288700\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les recomm...",
+            "output_response": "Code corrigé avec succès (36 caractères)",
+            "code_length_before": 36,
+            "code_length_after": 36
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "cfa44c19-a750-401d-a4ea-e1a574ea1ec6",
+        "timestamp": "2026-02-07T21:00:55.326030",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef addition(a, b):\n    return a + b\n```\n\nRAPPORT D'AUDIT :\nRAPPORT D'AUDIT MIS À JOUR PAR LE TESTEUR\nFichier: sandbox\\CodeErr2.py\nDate: 2026-02-07T21:00:45.534983\nAgent: Testeur\n\nVERDICT: ERREUR BLOQUANTE – correction requise\n\nERREURS BLOQUANTES À CORRIGER:\n\nErreur Bloquante #1:\n  Ligne: 10\n  Type: SyntaxError\n  Description: Deux-points manquants\n  Suggestion: Ajouter ':' après 'def function(x, y)'\n\n\nCorrige ce code en suivant les recomm...",
+            "output_response": "Code corrigé avec succès (36 caractères)",
+            "code_length_before": 36,
+            "code_length_after": 36
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "34660e11-0689-4fcc-89b8-04e9bbad9446",
+        "timestamp": "2026-02-07T21:00:55.447234",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_fixed": 1,
+            "files_validated": 0,
+            "files_failed": 1,
+            "total_iterations": 5,
+            "avg_iterations": 5.0,
+            "files_fixed_first_try": 0,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "PARTIAL_SUCCESS"
+    },
+    {
+        "id": "f127f852-42f7-451b-b57c-19e069328435",
+        "timestamp": "2026-02-07T21:02:23.499125",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "31225da2-dbdb-4c52-9e13-1d2d95224ca7",
+        "timestamp": "2026-02-07T21:02:23.518474",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "files_found": 1,
+            "input_prompt": "Recherche de fichiers Python dans sandbox\\.",
+            "output_response": "1 fichiers trouvés"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "98bd200f-ab6a-48f8-a923-7bfa6f84e4f9",
+        "timestamp": "2026-02-07T21:02:47.775712",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 2160,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:28:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:31:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:36:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:74:0: C0305: Trailing newlines (trailing-newlines)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:12:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\nsandbox\\CodeErr2.py:44:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\n\n------------------------------------------------------------------\nYour code has been rated at 8.11/10 (previous run: 4.44/10, +3.66)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair - MAIS LOGIQUE INVERSÉE!\"\"\"\n    return number % 2 == 1  # ❌ ERREUR: Retourne True pour impairs!\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres - MAIS RETOURNE LE MINIMUM!\"\"\"\n    if a > b:\n        return b  # ❌ ERREUR: Devrait retourner a\n    else:\n        return a  # ❌ ERREUR: Devrait retourner b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne - MAIS DIVISE PAR 0!\"\"\"\n    total = sum(notes)\n    return total / 0  # ❌ ERREUR: Division par zéro!\n\ndef inverser_chaine(texte):\n    \"\"\"Inverse une chaîne - MAIS NE FAIT RIEN!\"\"\"\n    return texte  # ❌ ERREUR: Devrait retourner texte[::-1]\n\nclass BankAccount:\n    \"\"\"Compte bancaire - AVEC ERREURS DE LOGIQUE\"\"\"\n    \n    def __init__(self, balance=0):\n        self.balance = balance\n    \n    def deposit(self, amount):\n        \"\"\"Dépôt - MAIS SOUSTRAIT AU LIEU D'AJOUTER!\"\"\"\n        self.balance -= amount  # ❌ ERREUR: Devrait être +=\n        return self.balance\n    \n    def withdraw(self, amount):\n        \"\"\"Retrait - MAIS AJOUTE AU LIEU DE SOUSTRAIRE!\"\"\"\n        self.balance += amount  # ❌ ERREUR: Devrait être -=\n        return self.balance\n\ndef factorielle(n):\n    \"\"\"Calcule la factorielle - MAIS DÉBORDE!\"\"\"\n    if n == 0:\n        return 1\n    else:\n        return n * factorielle(n)  # ❌ ERREUR: Boucle infinie! Devrait être n-1\n\ndef est_palindrome(mot):\n    \"\"\"Vérifie si un mot est un palindrome - MAIS TOUJOURS FALSE!\"\"\"\n    return mot == mot.upper()  # ❌ ERREUR: Mauvaise comparaison!\n\ndef diviser(a, b):\n    \"\"\"Division - SANS GESTION D'ERREUR!\"\"\"\n    return a / b  # ❌ ERREUR: Pas de vérification si b == 0\n\ndef trier_liste(liste):\n    \"\"\"Trie une liste - MAIS NE RETOURNE RIEN!\"\"\"\n    liste.sort()  # ❌ ERREUR: Ne retourne pas la liste triée\n\ndef compter_voyelles(texte):\n    \"\"\"Compte les voyelles - MAIS COMPTE MAL!\"\"\"\n    voyelles = \"aeiou\"\n    compteur = 0\n    for lettre in texte:\n        if lettre not in voyelles:  # ❌ ERREUR: Devrait être 'in' pas 'not in'\n            compteur += 1\n    return compteur\n\n\n\n\n\n\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:28:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:31:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:36:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:74:0: C0305: Trailing newlines (trailing-newlines)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:12:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\nsandbox\\CodeErr2.py:44:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\n\n------------------------------------------------------------------\nYour code has been rated at 8.11/10 (previous run: 4.44/10, +3.66)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 6 problèmes\n- [IMPORTANT] : 4 problèmes\n- [MINEUR] : 7 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Division par zéro - Ligne 34 : `return total / 0` → Ajouter une vérification `if len(notes) > 0:` avant le calcul et gérer le cas où la liste est vide.\n2. Boucle infinie - Ligne 42 : `return n * factorielle(n)` → Corriger l'appel récursif en `return n * factorielle(n-1)`.\n3. Dépôt incorrect - Ligne 54 : `self.balance -= amount` → Changer en `self.balance += amount`.\n4. Retrait incorrect - Ligne 59 : `self.balance += amount` → Changer en `self.balance -= amount`.\n5. Logique inversée - Ligne 8 : `return number % 2 == 1` → Changer en `return number % 2 == 0`.\n6. Retourne minimum au lieu du maximum - Ligne 17 : `return b` et `return a` → Inverser les retours pour retourner le maximum.\n\n### [IMPORTANT]\n1. Gestion d'erreur division - Ligne 69 : `return a / b` → Ajouter un bloc `try...except ZeroDivisionError` pour gérer la division par zéro.\n2. Palindrome incorrect - Ligne 63 : `return mot == mot.upper()` → Comparer `mot.lower()` avec `mot[::-1].lower()`.\n3. Fonction sans retour - Ligne 65 : `liste.sort()` → Ajouter `return liste` pour retourner la liste triée.\n4. Compte les consonnes - Ligne 79 : `if lettre not in voyelles:` → Changer en `if lettre in voyelles:`.\n\n### [MINEUR]\n1. Nom de module - Ligne 1 : `CodeErr2` → Renommer en `code_err2` (snake_case).\n2. `else` inutile - Ligne 12 : `else:` → Supprimer le bloc `else`.\n3. `else` inutile - Ligne 44 : `else:` → Supprimer le bloc `else`.\n4. Espaces en fin de ligne - Lignes 28, 31, 36 → Supprimer les espaces en fin de ligne.\n5. Lignes vides en fin de fichier - Ligne 74 → Supprimer les lignes vides inutiles.\n6. Docstrings manquantes - Lignes 1, 8, 17, 31, 36, 42, 51, 54, 59, 63, 69, 79 → Ajouter des docstrings descriptives.\n7. Variables inutilisées - Aucune.\n\n## 3. Remarques\nCorriger les erreurs critiques en priorité pour assurer le bon fonctionnement du code. Ajouter des tests unitaires pour valider les corrections et prévenir les régressions. Améliorer la lisibilité du code en suivant les conventions PEP8."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6eea3929-1dc4-4836-98b8-0d96b87ea3c8",
+        "timestamp": "2026-02-07T21:03:05.791323",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair - MAIS LOGIQUE INVERSÉE!\"\"\"\n    return number % 2 == 1  # ❌ ERREUR: Retourne True pour impairs!\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres - MAIS RETOURNE LE MINIMUM!\"\"\"\n    if a > b:\n        return b  # ❌ ERREUR: Devrait retourner a\n    else:\n        return a  # ❌...",
+            "output_response": "Code corrigé avec succès (1981 caractères)",
+            "code_length_before": 2160,
+            "code_length_after": 1981
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "328543e3-bdd0-41ab-b535-3183e206abef",
+        "timestamp": "2026-02-07T21:03:23.597544",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        re...",
+            "output_response": "Code corrigé avec succès (1981 caractères)",
+            "code_length_before": 1981,
+            "code_length_after": 1981
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6e49b5b7-f09b-4c84-91ef-b94d90d80a43",
+        "timestamp": "2026-02-07T21:03:42.670283",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        re...",
+            "output_response": "Code corrigé avec succès (1981 caractères)",
+            "code_length_before": 1981,
+            "code_length_after": 1981
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "999866bd-50e4-453c-a049-3abca0e780e9",
+        "timestamp": "2026-02-07T21:04:01.151923",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        re...",
+            "output_response": "Code corrigé avec succès (1981 caractères)",
+            "code_length_before": 1981,
+            "code_length_after": 1981
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3b9178fc-8663-4ba1-ad13-7ae2affde464",
+        "timestamp": "2026-02-07T21:04:17.815762",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        re...",
+            "output_response": "Code corrigé avec succès (1981 caractères)",
+            "code_length_before": 1981,
+            "code_length_after": 1981
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "806b64ff-a6ca-4093-8010-8c9c12f9b196",
+        "timestamp": "2026-02-07T21:04:17.935478",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_fixed": 1,
+            "files_validated": 0,
+            "files_failed": 1,
+            "total_iterations": 5,
+            "avg_iterations": 5.0,
+            "files_fixed_first_try": 0,
+            "total_delay_time": 0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée avec succès"
+        },
+        "status": "PARTIAL_SUCCESS"
+    },
+    {
+        "id": "b9fc9977-072c-4db7-93ea-76a3a558b901",
+        "timestamp": "2026-02-07T21:30:55.663597",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "facf3343-d76a-4e44-a6c5-b9d0654a61ea",
+        "timestamp": "2026-02-07T21:31:18.035585",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 1981,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:30:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:34:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:39:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:75:0: C0304: Final newline missing (missing-final-newline)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:18:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\nsandbox\\CodeErr2.py:47:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\n\n------------------------------------------------------------------\nYour code has been rated at 8.37/10 (previous run: 8.11/10, +0.26)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        return total / len(notes)\n    else:\n        return 0\n\ndef inverser_chaine(texte):\n    \"\"\"Inverse une chaîne de caractères.\"\"\"\n    return texte[::-1]\n\nclass BankAccount:\n    \"\"\"Représente un compte bancaire avec des opérations de dépôt et de retrait.\"\"\"\n    \n    def __init__(self, balance=0):\n        \"\"\"Initialise le compte bancaire avec un solde initial.\"\"\"\n        self.balance = balance\n    \n    def deposit(self, amount):\n        \"\"\"Dépose un montant sur le compte.\"\"\"\n        self.balance += amount\n        return self.balance\n    \n    def withdraw(self, amount):\n        \"\"\"Retire un montant du compte.\"\"\"\n        self.balance -= amount\n        return self.balance\n\ndef factorielle(n):\n    \"\"\"Calcule la factorielle d'un nombre entier non négatif.\"\"\"\n    if n == 0:\n        return 1\n    else:\n        return n * factorielle(n-1)\n\ndef est_palindrome(mot):\n    \"\"\"Vérifie si un mot est un palindrome (lecture identique dans les deux sens).\"\"\"\n    return mot.lower() == mot[::-1].lower()\n\ndef diviser(a, b):\n    \"\"\"Divise deux nombres, en gérant l'erreur de division par zéro.\"\"\"\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Erreur : division par zéro\"\n\ndef trier_liste(liste):\n    \"\"\"Trie une liste et retourne la liste triée.\"\"\"\n    liste.sort()\n    return liste\n\ndef compter_voyelles(texte):\n    \"\"\"Compte le nombre de voyelles dans une chaîne de caractères.\"\"\"\n    voyelles = \"aeiou\"\n    compteur = 0\n    for lettre in texte:\n        if lettre in voyelles:\n            compteur += 1\n    return compteur\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:30:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:34:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:39:0: C0303: Trailing whitespace (trailing-whitespace)\nsandbox\\CodeErr2.py:75:0: C0304: Final newline missing (missing-final-newline)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:18:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\nsandbox\\CodeErr2.py:47:4: R1705: Unnecessary \"else\" after \"return\", remove the \"else\" and de-indent the code inside it (no-else-return)\n\n------------------------------------------------------------------\nYour code has been rated at 8.37/10 (previous run: 8.11/10, +0.26)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 2 problèmes\n- [MINEUR] : 6 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Division par zéro - Ligne 71 : La fonction `diviser` gère la `ZeroDivisionError` en retournant une chaîne, ce qui peut causer des erreurs de type plus tard. → Retourner `None` ou lever une exception personnalisée.\n\n### [IMPORTANT]\n1. Style de nommage du module - Ligne 1 : Le nom du module \"CodeErr2\" ne respecte pas la convention snake_case. → Renommer le module en `code_err2.py`.\n2. Clause `else` inutile - Lignes 19, 48 : Les clauses `else` après un `return` sont inutiles et nuisent à la lisibilité. → Supprimer les clauses `else` et dé-indenter le code.\n\n### [MINEUR]\n1. Espaces en fin de ligne - Lignes 30, 34, 39 : Présence d'espaces inutiles en fin de ligne. → Supprimer les espaces en fin de ligne.\n2. Newline final manquant - Ligne 75 : Le fichier n'a pas de newline final. → Ajouter un newline à la fin du fichier.\n3. Docstrings manquantes - Lignes 5, 11, 17, 23, 29, 35, 41, 47, 53, 59, 65 : Manque de docstrings pour certaines fonctions. → Ajouter des docstrings concises pour chaque fonction.\n4. Variable inutilisée - Ligne 60 : La variable `voyelles` n'est pas utilisée après sa définition. → Supprimer la variable `voyelles`.\n5. Nom de variable - Ligne 60 : Le nom de variable `texte` est trop général. → Renommer en `chaine` ou `input_string`.\n6. Style PEP8 - Ligne 2 : La docstring du module est trop courte. → Ajouter une description plus détaillée du module.\n\n## 3. Remarques\nPrioriser la correction de la division par zéro pour éviter des erreurs d'exécution. Améliorer la lisibilité en supprimant les clauses `else` inutiles et en respectant les conventions de nommage. Ajouter des docstrings pour une meilleure documentation."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "c97967c2-3f8d-4745-adaf-e7b7f9e831fc",
+        "timestamp": "2026-02-07T21:31:34.484718",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier s'exécute MAIS contient des bugs logiques\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la moyenne d'une liste de nombres.\"\"\"\n    if len(notes) > 0:\n        total = sum(notes)\n        re...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 1981,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "0f624bfb-b5b9-4394-b23e-207646f8bb3c",
+        "timestamp": "2026-02-07T21:31:49.568521",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier contient des fonctions avec des bugs logiques et des problèmes de style.\nIl est utilisé pour tester les capacités de correction de code.\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la ...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 2002,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6b7fa69a-57dc-4e88-beb1-9067688d3b82",
+        "timestamp": "2026-02-07T21:32:06.625152",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier contient des fonctions avec des bugs logiques et des problèmes de style.\nIl est utilisé pour tester les capacités de correction de code.\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la ...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 2002,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a0da4343-f5ba-4150-a68b-f4d1c67ef548",
+        "timestamp": "2026-02-07T21:32:22.022381",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier contient des fonctions avec des bugs logiques et des problèmes de style.\nIl est utilisé pour tester les capacités de correction de code.\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la ...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 2002,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "3bddc359-9d27-4536-88f6-d6aaac2c4f70",
+        "timestamp": "2026-02-07T21:32:35.188261",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier contient des fonctions avec des bugs logiques et des problèmes de style.\nIl est utilisé pour tester les capacités de correction de code.\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la ...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 2002,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1774388f-0c86-4990-b5a9-4c147fe0c76d",
+        "timestamp": "2026-02-07T21:32:54.939902",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 2 - ERREURS DE LOGIQUE\nCe fichier contient des fonctions avec des bugs logiques et des problèmes de style.\nIl est utilisé pour tester les capacités de correction de code.\n\"\"\"\n\ndef is_even(number):\n    \"\"\"Vérifie si un nombre est pair.\"\"\"\n    return number % 2 == 0\n\ndef find_maximum(a, b):\n    \"\"\"Trouve le maximum entre deux nombres.\"\"\"\n    if a > b:\n        return a\n    return b\n\ndef calculer_moyenne(notes):\n    \"\"\"Calcule la ...",
+            "output_response": "Code corrigé avec succès (2002 caractères)",
+            "code_length_before": 2002,
+            "code_length_after": 2002
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "6af88678-db7e-4b51-9fb0-2de118d694b7",
+        "timestamp": "2026-02-07T21:32:55.044679",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_validated": 0,
+            "files_failed": 1,
+            "files_first_try": 0,
+            "files_needed_selfhealing": 1,
+            "total_iterations": 6,
+            "avg_iterations": 6.0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée"
+        },
+        "status": "PARTIAL_SUCCESS"
+    },
+    {
+        "id": "7a0fe7d5-108f-4354-b84d-133af9888835",
+        "timestamp": "2026-02-07T21:39:39.681966",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e11a16b4-42a2-449a-9f13-c198a247af70",
+        "timestamp": "2026-02-07T21:39:56.871608",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 2149,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:78:0: C0305: Trailing newlines (trailing-newlines)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:33:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)\nsandbox\\CodeErr2.py:42:11: E0602: Undefined variable 'variable_inexistante' (undefined-variable)\nsandbox\\CodeErr2.py:49:0: C0115: Missing class docstring (missing-class-docstring)\nsandbox\\CodeErr2.py:50:4: C0116: Missing function or method docstring (missing-function-docstring)\nsandbox\\CodeErr2.py:49:0: R0903: Too few public methods (1/2) (too-few-public-methods)\nsandbox\\CodeErr2.py:65:11: E1126: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)\n\n------------------------------------------------------------------\nYour code has been rated at 6.00/10 (previous run: 8.37/10, -2.37)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\n\"\"\"\nFichier 3 - ERREURS D'EXÉCUTION (RUNTIME)\nCe fichier s'exécute au début mais crash pendant l'exécution\n\"\"\"\n\ndef acceder_index_invalide():\n    \"\"\"Accède à un index qui n'existe pas\"\"\"\n    ma_liste = [1, 2, 3]\n    return ma_liste[10]  # ❌ IndexError\n\ndef diviser_par_zero():\n    \"\"\"Division par zéro\"\"\"\n    a = 10\n    b = 0\n    return a / b  # ❌ ZeroDivisionError\n\ndef acceder_cle_inexistante():\n    \"\"\"Accède à une clé qui n'existe pas dans le dict\"\"\"\n    mon_dict = {\"nom\": \"Alice\", \"age\": 25}\n    return mon_dict[\"adresse\"]  # ❌ KeyError\n\ndef convertir_type_invalide():\n    \"\"\"Conversion de type impossible\"\"\"\n    texte = \"abc\"\n    return int(texte)  # ❌ ValueError\n\ndef concatener_types_incompatibles():\n    \"\"\"Concaténation de types incompatibles\"\"\"\n    return \"Age: \" + 25  # ❌ TypeError\n\ndef fichier_inexistant():\n    \"\"\"Ouvre un fichier qui n'existe pas\"\"\"\n    with open(\"fichier_qui_nexiste_pas.txt\", \"r\") as f:\n        return f.read()  # ❌ FileNotFoundError\n\ndef recursion_infinie(n):\n    \"\"\"Récursion sans condition d'arrêt\"\"\"\n    return recursion_infinie(n + 1)  # ❌ RecursionError\n\ndef utiliser_variable_non_definie():\n    \"\"\"Utilise une variable non définie\"\"\"\n    return variable_inexistante + 10  # ❌ NameError\n\ndef appeler_methode_sur_none():\n    \"\"\"Appelle une méthode sur None\"\"\"\n    resultat = None\n    return resultat.upper()  # ❌ AttributeError\n\nclass Animal:\n    def parler(self):\n        raise NotImplementedError(\"Méthode abstraite\")\n\ndef creer_animal_sans_implementation():\n    \"\"\"Crée un animal et appelle méthode non implémentée\"\"\"\n    animal = Animal()\n    animal.parler()  # ❌ NotImplementedError\n\ndef debordement_memoire():\n    \"\"\"Crée une liste gigantesque\"\"\"\n    return [0] * (10 ** 10)  # ❌ MemoryError possible\n\ndef mauvais_type_argument():\n    \"\"\"Passe un mauvais type d'argument\"\"\"\n    texte = \"Hello\"\n    return texte[0.5]  # ❌ TypeError\n\n# Code qui s'exécute automatiquement et crash\nif __name__ == \"__main__\":\n    # Ce code va crasher dès qu'on importe ou exécute le fichier\n    print(\"Début du programme\")\n    acceder_index_invalide()  # ❌ CRASH ICI!\n    print(\"Cette ligne ne sera jamais exécutée\")\n\n\n\n\n\n\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:78:0: C0305: Trailing newlines (trailing-newlines)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:33:9: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)\nsandbox\\CodeErr2.py:42:11: E0602: Undefined variable 'variable_inexistante' (undefined-variable)\nsandbox\\CodeErr2.py:49:0: C0115: Missing class docstring (missing-class-docstring)\nsandbox\\CodeErr2.py:50:4: C0116: Missing function or method docstring (missing-function-docstring)\nsandbox\\CodeErr2.py:49:0: R0903: Too few public methods (1/2) (too-few-public-methods)\nsandbox\\CodeErr2.py:65:11: E1126: Sequence index is not an int, slice, or instance with __index__ (invalid-sequence-index)\n\n------------------------------------------------------------------\nYour code has been rated at 6.00/10 (previous run: 8.37/10, -2.37)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 9 problèmes\n- [IMPORTANT] : 2 problèmes\n- [MINEUR] : 6 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. IndexError - Ligne 6 : Accès à un index hors limites → Ajouter une vérification de la longueur de la liste avant l'accès.\n2. ZeroDivisionError - Ligne 11 : Division par zéro → Ajouter une condition pour éviter la division par zéro.\n3. KeyError - Ligne 16 : Accès à une clé inexistante → Vérifier l'existence de la clé dans le dictionnaire avant l'accès.\n4. ValueError - Ligne 21 : Conversion de type invalide → Utiliser un bloc `try-except` pour gérer l'erreur de conversion.\n5. TypeError - Ligne 26 : Concaténation de types incompatibles → Convertir l'entier en chaîne de caractères avant la concaténation.\n6. FileNotFoundError - Ligne 31 : Fichier inexistant → Gérer l'exception `FileNotFoundError` avec un bloc `try-except`.\n7. RecursionError - Ligne 36 : Récursion infinie → Ajouter une condition d'arrêt à la fonction récursive.\n8. NameError - Ligne 41 : Variable non définie → Définir la variable avant son utilisation.\n9. AttributeError - Ligne 46 : Appel de méthode sur None → Vérifier si l'objet est None avant d'appeler une méthode.\n\n### [IMPORTANT]\n1. NotImplementedError - Ligne 55 : Méthode abstraite non implémentée → Implémenter la méthode `parler` dans une sous-classe ou lever une exception appropriée.\n2. MemoryError - Ligne 60 : Allocation mémoire excessive → Éviter la création de listes extrêmement volumineuses.\n\n### [MINEUR]\n1. Module name - Ligne 1 : Nom de module non conforme à snake_case → Renommer le module en utilisant snake_case (ex: `code_err2.py`).\n2. Trailing newlines - Ligne 78 : Lignes vides en fin de fichier → Supprimer les lignes vides inutiles.\n3. Unspecified encoding - Ligne 33 : Encodage non spécifié lors de l'ouverture du fichier → Spécifier l'encodage (ex: `utf-8`) lors de l'ouverture du fichier.\n4. Undefined variable - Ligne 42 : Variable non définie (déjà corrigé dans critique)\n5. Missing class docstring - Ligne 49 : Docstring de classe manquante → Ajouter une docstring à la classe `Animal`.\n6. Missing function docstring - Ligne 50 : Docstring de méthode manquante → Ajouter une docstring à la méthode `parler`.\n\n## 3. Remarques\nPrioriser la correction des erreurs critiques pour éviter les plantages du programme. Ajouter des tests unitaires pour valider les corrections et prévenir les régressions. Considérer l'utilisation d'un linter et d'un formateur de code pour maintenir la cohérence du style."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "9a673f99-1cf7-406b-9ee7-b955ad839ff9",
+        "timestamp": "2026-02-07T21:40:15.199317",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\n\"\"\"\nFichier 3 - ERREURS D'EXÉCUTION (RUNTIME)\nCe fichier s'exécute au début mais crash pendant l'exécution\n\"\"\"\n\ndef acceder_index_invalide():\n    \"\"\"Accède à un index qui n'existe pas\"\"\"\n    ma_liste = [1, 2, 3]\n    return ma_liste[10]  # ❌ IndexError\n\ndef diviser_par_zero():\n    \"\"\"Division par zéro\"\"\"\n    a = 10\n    b = 0\n    return a / b  # ❌ ZeroDivisionError\n\ndef acceder_cle_inexistante():\n    \"\"\"Accède à une clé qui n'existe pas dan...",
+            "output_response": "Code corrigé avec succès (2949 caractères)",
+            "code_length_before": 2149,
+            "code_length_after": 2949
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "2c0f644b-d464-4fd4-a488-112a65807afb",
+        "timestamp": "2026-02-07T21:40:37.788864",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_validated": 1,
+            "files_failed": 0,
+            "files_first_try": 1,
+            "files_needed_selfhealing": 0,
+            "total_iterations": 1,
+            "avg_iterations": 1.0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée"
+        },
+        "status": "SUCCESS"
     }
 ]
