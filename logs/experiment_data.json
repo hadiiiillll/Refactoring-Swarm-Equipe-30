@@ -5854,5 +5854,70 @@
             "output_response": "Mission terminée"
         },
         "status": "SUCCESS"
+    },
+    {
+        "id": "5dc7cc7a-7617-40bb-8a24-5ea7f5bef25b",
+        "timestamp": "2026-02-09T17:12:15.801661",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "target_dir": "sandbox\\.",
+            "delay_seconds": 10,
+            "max_iterations": 5,
+            "input_prompt": "Scan du dossier sandbox\\.",
+            "output_response": "Démarrage du système"
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "1f67bbe1-e6e8-4890-a6c7-49547f444264",
+        "timestamp": "2026-02-09T17:12:30.071060",
+        "agent": "Auditor",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "code_length": 166,
+            "pylint_report": "************* Module CodeErr2\nsandbox\\CodeErr2.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 5.00/10 (previous run: 6.00/10, -1.00)\n\n",
+            "input_prompt": "Fichier analysé : sandbox\\CodeErr2.py\n\n--- CODE SOURCE ---\n```python\ndef calculer_moyenne(notes):\n    total = 0\n    for n in notes:\n        total += n\n    return total / 0   # 💥 division par zéro\n\nprint(calculer_moyenne([10, 12, 14]))\n\n```\n\n--- RAPPORT PYLINT ---\n************* Module CodeErr2\nsandbox\\CodeErr2.py:1:0: C0114: Missing module docstring (missing-module-docstring)\nsandbox\\CodeErr2.py:1:0: C0103: Module name \"CodeErr2\" doesn't conform to snake_case naming style (invalid-name)\nsandbox\\CodeErr2.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)\n\n------------------------------------------------------------------\nYour code has been rated at 5.00/10 (previous run: 6.00/10, -1.00)\n\n\n\nGénère un plan de refactoring détaillé basé sur :\n1. Les problèmes identifiés par Pylint\n2. Les bugs logiques potentiels que tu détectes dans le code\n3. Les problèmes de sécurité (division par zéro, fichiers non fermés, etc.)\n4. Les violations des bonnes pratiques Python",
+            "output_response": "## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problème\n- [MINEUR] : 3 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Division par zéro - Ligne 5 : La fonction `calculer_moyenne` effectue une division par zéro. → Ajouter une condition pour vérifier si la liste `notes` est vide avant de calculer la moyenne.\n\n### [IMPORTANT]\n1.  Aucun problème important détecté.\n\n### [MINEUR]\n1. Docstring module manquant - Ligne 1 : Le module n'a pas de docstring. → Ajouter une docstring au début du fichier expliquant le but du module.\n2. Docstring fonction manquante - Ligne 1 : La fonction `calculer_moyenne` n'a pas de docstring. → Ajouter une docstring expliquant les paramètres et la valeur de retour de la fonction.\n3. Nom de module non conforme - Ligne 1 : Le nom du module \"CodeErr2\" ne respecte pas la convention snake_case. → Renommer le module en `code_err2`.\n\n## 3. Remarques\nLe code est simple, mais la division par zéro est un bug critique qui doit être corrigé immédiatement. Ajouter des docstrings améliorera la lisibilité et la maintenabilité du code."
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "e3018123-a4a9-41a0-a0be-b71580ae0c74",
+        "timestamp": "2026-02-09T17:12:38.463109",
+        "agent": "FixateurAgent",
+        "model": "gemma-3-27b-it",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "file_path": "sandbox\\CodeErr2.py",
+            "audit_file": "audit_reports\\CodeErr2_audit.txt",
+            "input_prompt": "\nFICHIER À CORRIGER : CodeErr2.py\n\nCODE BUGUÉ :\n```python\ndef calculer_moyenne(notes):\n    total = 0\n    for n in notes:\n        total += n\n    return total / 0   # 💥 division par zéro\n\nprint(calculer_moyenne([10, 12, 14]))\n\n```\n\nRAPPORT D'AUDIT :\n## 1. Analyse des Problèmes\n- [CRITIQUE] : 1 problème\n- [IMPORTANT] : 0 problème\n- [MINEUR] : 3 problèmes\n\n## 2. Plan de Correction\n\n### [CRITIQUE]\n1. Division par zéro - Ligne 5 : La fonction `calculer_moyenne` effectue une division par zéro. → Ajoute...",
+            "output_response": "Code corrigé avec succès (496 caractères)",
+            "code_length_before": 166,
+            "code_length_after": 496
+        },
+        "status": "SUCCESS"
+    },
+    {
+        "id": "a281d8db-196c-47c7-a993-6ae036e32254",
+        "timestamp": "2026-02-09T17:12:56.991625",
+        "agent": "System",
+        "model": "N/A",
+        "action": "CODE_ANALYSIS",
+        "details": {
+            "files_analyzed": 1,
+            "files_validated": 1,
+            "files_failed": 0,
+            "files_first_try": 1,
+            "files_needed_selfhealing": 0,
+            "total_iterations": 1,
+            "avg_iterations": 1.0,
+            "input_prompt": "Analyse complète de 1 fichiers",
+            "output_response": "Mission terminée"
+        },
+        "status": "SUCCESS"
     }
 ]
