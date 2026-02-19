@@ -80,7 +80,7 @@ def main():
         "--mode",
         type=str,
         choices=["auto", "langgraph", "classic"],
-        default="auto",
+        default="classic",
         help="Mode d'exécution: auto (détection), langgraph, classic"
     )
     args = parser.parse_args()

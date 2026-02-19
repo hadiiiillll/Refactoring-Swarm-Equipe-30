@@ -1,16 +1,16 @@
 [
   {
-    "timestamp": "2026-02-19T10:45:24.587074",
+    "timestamp": "2026-02-19T13:12:55.090000",
     "agent": "Testeur",
     "success": true,
-    "test_path": "sandbox\\dataset_test\\buggy_math.py",
+    "test_path": "sandbox\\dataset_test\\d.py",
     "verdict": "OK – exécution valide",
     "blocking_errors_count": 0,
-    "non_blocking_count": 2,
+    "non_blocking_count": 0,
     "error_log_file": null
   },
   {
-    "timestamp": "2026-02-19T10:45:24.589080",
+    "timestamp": "2026-02-19T13:12:55.091963",
     "agent": "Testeur",
     "action": "Validation",
     "validation": {
@@ -21,17 +21,38 @@
     }
   },
   {
-    "timestamp": "2026-02-19T10:45:48.582705",
+    "timestamp": "2026-02-19T13:13:45.009862",
     "agent": "Testeur",
     "success": true,
-    "test_path": "sandbox\\dataset_test\\buggy_strings.py",
+    "test_path": "sandbox\\dataset_test\\ha.py",
     "verdict": "OK – exécution valide",
     "blocking_errors_count": 0,
-    "non_blocking_count": 1,
+    "non_blocking_count": 2,
     "error_log_file": null
   },
   {
-    "timestamp": "2026-02-19T10:45:48.584716",
+    "timestamp": "2026-02-19T13:13:45.012868",
+    "agent": "Testeur",
+    "action": "Validation",
+    "validation": {
+      "status": "SUCCESS",
+      "message": "Code validé - aucune erreur bloquante",
+      "next_action": "TERMINATE",
+      "verdict": "OK – exécution valide"
+    }
+  },
+  {
+    "timestamp": "2026-02-19T13:14:40.009594",
+    "agent": "Testeur",
+    "success": true,
+    "test_path": "sandbox\\dataset_test\\n.py",
+    "verdict": "OK – exécution valide",
+    "blocking_errors_count": 0,
+    "non_blocking_count": 2,
+    "error_log_file": null
+  },
+  {
+    "timestamp": "2026-02-19T13:14:40.011598",
     "agent": "Testeur",
     "action": "Validation",
     "validation": {
