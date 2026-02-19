@@ -7,6 +7,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 import json
 from datetime import datetime
+import importlib.util  # NOUVEAU: pour détecter LangGraph
 
 from src.agents.auditor_agent import AuditorAgent
 from src.agents.fixateur_agent import FixateurAgent
@@ -74,6 +75,14 @@ def main():
     parser.add_argument("--target_dir", type=str, required=True)
     parser.add_argument("--delay", type=int, default=DELAY_BETWEEN_REQUESTS)
     parser.add_argument("--max-iterations", type=int, default=MAX_ITERATIONS)
+    # NOUVEAU: Ajout du paramètre mode
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["auto", "langgraph", "classic"],
+        default="auto",
+        help="Mode d'exécution: auto (détection), langgraph, classic"
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.target_dir):
@@ -82,7 +91,8 @@ def main():
 
     print(f"DEMARRAGE SUR : {args.target_dir}")
     print(f"Délai entre fichiers : {args.delay} secondes")
-    print(f"Itérations self-healing max : {args.max_iterations}\n")
+    print(f"Itérations self-healing max : {args.max_iterations}")
+    print(f"Mode : {args.mode}\n")
 
     log_experiment(
         agent_name="System",
@@ -92,12 +102,46 @@ def main():
             "target_dir": args.target_dir,
             "delay_seconds": args.delay,
             "max_iterations": args.max_iterations,
+            "mode": args.mode,
             "input_prompt": f"Scan du dossier {args.target_dir}",
             "output_response": "Démarrage du système"
         },
         status="SUCCESS"
     )
 
+    # ===== NOUVEAU : Détection et exécution LangGraph =====
+    use_langgraph = False
+    
+    if args.mode == "langgraph":
+        use_langgraph = True
+    elif args.mode == "auto":
+        # Vérifier si LangGraph est installé
+        langgraph_spec = importlib.util.find_spec("langgraph")
+        use_langgraph = langgraph_spec is not None
+        
+        if use_langgraph:
+            print("✓ LangGraph détecté - utilisation du mode optimisé")
+        else:
+            print("ℹ️ LangGraph non installé - utilisation du mode classique")
+    
+    if use_langgraph:
+        try:
+            from src.orchestrator.graph import Orchestrator
+            
+            orchestrator = Orchestrator(
+                max_iterations=args.max_iterations,
+                delay_between_files=args.delay
+            )
+            
+            exit_code = orchestrator.run(args.target_dir)
+            sys.exit(exit_code)
+            
+        except Exception as e:
+            print(f"❌ Erreur avec LangGraph: {e}")
+            print("🔄 Bascule en mode classique...\n")
+            # Continue avec le mode classique
+    
+    # ===== VOTRE CODE EXISTANT (mode classique) =====
     target_path = Path(args.target_dir)
     python_files = list(target_path.glob("*.py"))
 
