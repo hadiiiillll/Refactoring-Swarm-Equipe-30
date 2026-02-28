@@ -1,16 +1,16 @@
 [
   {
-    "timestamp": "2026-02-24T11:08:57.606856",
+    "timestamp": "2026-02-24T12:22:41.037480",
     "agent": "Testeur",
     "success": true,
     "test_path": "sandbox\\CodeErr2.py",
     "verdict": "OK – exécution valide",
     "blocking_errors_count": 0,
-    "non_blocking_count": 2,
+    "non_blocking_count": 0,
     "error_log_file": null
   },
   {
-    "timestamp": "2026-02-24T11:08:57.609187",
+    "timestamp": "2026-02-24T12:22:41.037480",
     "agent": "Testeur",
     "action": "Validation",
     "validation": {
